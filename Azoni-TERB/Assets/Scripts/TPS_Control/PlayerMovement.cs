@@ -98,11 +98,11 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	private void ShootBullets() {
-		RaycastHit hit;
+		/*RaycastHit hit;
 		if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit)) {
 			GameObject particle = Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
 			Destroy(particle, 0.5f);
-		}
+		}*/
 	}
 
 	public void Jump() {
