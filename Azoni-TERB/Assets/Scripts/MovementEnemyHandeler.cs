@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.AI;
 public class MovementEnemyHandeler : MonoBehaviour
 {
-    NavMeshAgent nmagent;
+    public bool enemyShoots = false;
+    public NavMeshAgent nmagent;
+    [SerializeField] GameObject Ebullet;
     [SerializeField] Transform [] wayPoints;
-    [SerializeField] GameObject player;
+    [SerializeField] public GameObject player;
     [SerializeField] int followRange, notFollowRange;
     GameObject currentFollowTarget;
     int wayPointIndex;
