@@ -17,7 +17,6 @@ public class JoystickLeft : MonoBehaviour {
 	public static float positionX;
 	public static float positionY;
 	public static float angle = 0;
-
 	PointerEventData ped;
 
 	void Start() {		
@@ -59,7 +58,6 @@ public class JoystickLeft : MonoBehaviour {
 			joystickXPosition = stickMovement * Mathf.Sin(angle);
 			joystickYPosition = stickMovement * Mathf.Cos(angle);
 		}
-
 		positionX = -joystickXPosition / stickMovement;
 		positionY = -joystickYPosition / stickMovement;
 
@@ -95,4 +93,5 @@ public class JoystickLeft : MonoBehaviour {
 		backgroundImage.SetActive(false);
 		stick.SetActive(false);
 	}
+
 }
