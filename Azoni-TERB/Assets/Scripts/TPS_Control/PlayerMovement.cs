@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public GameObject hitParticle;
 	private float speed = 5f;
 	float shootTimer = 0.2f;
 
@@ -18,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	private float cameraStartYPos;
 	private Vector3 cameraStartLocalPos;
+	private PlayerShootManager psm;
 
 
 	public bool rightAreaRotateCamera = false;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 	void Start () {
 		Application.targetFrameRate = 300;
 		//shootSound = GameObject.Find("ShotSound").GetComponent<AudioSource> ();
+		psm = gameObject.GetComponent<PlayerShootManager>();
 		rb = GetComponent<Rigidbody> ();
 		obstacleDetectorZPos = obstacleDetector.transform.localPosition.z;
 		cameraStartYPos = Camera.main.transform.localPosition.y;
@@ -98,11 +99,7 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	private void ShootBullets() {
-		/*RaycastHit hit;
-		if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit)) {
-			GameObject particle = Instantiate(hitParticle, hit.point, Quaternion.LookRotation(hit.normal));
-			Destroy(particle, 0.5f);
-		}*/
+		psm.PlayerShoot();
 	}
 
 	public void Jump() {
