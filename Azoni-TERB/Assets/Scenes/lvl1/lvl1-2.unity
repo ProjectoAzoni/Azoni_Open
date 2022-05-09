@@ -513,7 +513,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &623441809
@@ -524,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623441807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.557, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 661639943}
@@ -553,13 +553,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623441807}
   serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 2
-  m_AngularDrag: 9.5
+  m_Mass: 50
+  m_Drag: 10.95
+  m_AngularDrag: 16.68
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &661639942
 GameObject:
@@ -1396,7 +1396,6 @@ GameObject:
   - component: {fileID: 1255959045}
   - component: {fileID: 1255959050}
   - component: {fileID: 1255959049}
-  - component: {fileID: 1255959051}
   m_Layer: 5
   m_Name: MovementCanvas
   m_TagString: Untagged
@@ -1505,7 +1504,7 @@ MonoBehaviour:
   rightAreaForStickyJoystick: {fileID: 1889394421}
   stickMovementThreshold: 4
   sticky: 1
-  moveJoystickBaseOnDrag: 0
+  moveJoystickBaseOnDrag: 1
   freezeX: 0
   freezeY: 0
 --- !u!114 &1255959050
@@ -1525,28 +1524,9 @@ MonoBehaviour:
   leftAreaForStickyJoystick: {fileID: 875261706}
   stickMovementThreshold: 4
   sticky: 1
-  moveJoystickBaseOnDrag: 1
+  moveJoystickBaseOnDrag: 0
   freezeX: 0
   freezeY: 0
---- !u!114 &1255959051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255959044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7985ba17b7514d54c8077f9d2f082122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stick: {fileID: 1942656592}
-  backgroundImage: {fileID: 0}
-  stickMovementThreshold: 30
-  positionX: 0
-  positionY: 0
-  angle: 0
-  moveJoystickBaseOnDrag: 0
 --- !u!1 &1346330919
 GameObject:
   m_ObjectHideFlags: 0
