@@ -7,7 +7,7 @@ public class BasicSaveManager : MonoBehaviour
     //set the stars per level
     public void SetLevelData(int level, int numEstrellas) {
         //if there is a info in the key of the level
-        if (GetLevelData(level) != null)
+        try
         {
             // if the higest score is less than the new score
             if (GetLevelData(level) < numEstrellas)
@@ -20,7 +20,10 @@ public class BasicSaveManager : MonoBehaviour
                 //The higest score is already saved
             }
         }
-        else {
+        catch (System.Exception)
+        {
+            Debug.Log("Level is null");
+
             //Save the score per level for firs time
             PlayerPrefs.SetInt("level" + level, numEstrellas);
         }
