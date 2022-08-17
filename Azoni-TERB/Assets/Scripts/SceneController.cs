@@ -13,7 +13,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] SettingsManager sm;
 
     //go to an scene by its name
-    public void GoToScene(string scene) {
+   static public void GoToScene(string scene) {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
     }
 
