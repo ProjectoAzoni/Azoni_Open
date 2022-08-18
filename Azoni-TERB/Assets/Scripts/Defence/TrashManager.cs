@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrashManager : MonoBehaviour
 {
+    //este se explica solo :v
     [SerializeField] public string type;
 
     public string [] states = {"Grabbed","Dropped","Process"};
