@@ -7,7 +7,8 @@ public class Movement2d : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
     private Vector3 moveDelta;
-    public int moveSpeed;
+    private RaycastHit2D hit;
+    public float moveSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class Movement2d : MonoBehaviour
         
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        moveDelta = new Vector3(x, y, 0);
+        moveDelta = new Vector3(x, y, 0)*moveSpeed;
         if (moveDelta.x > 0)
         {
             transform.localScale = Vector3.one;
@@ -29,6 +30,16 @@ public class Movement2d : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        transform.Translate(moveDelta * Time.deltaTime*moveSpeed);
+        hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(0,moveDelta.y),Mathf.Abs(moveDelta.y*Time.deltaTime),LayerMask.GetMask("Actor","Block"));
+        if (hit.collider == null)
+        {
+            transform.Translate(0, moveDelta.y * Time.deltaTime * moveSpeed, 0);
+
+        }
+        hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x,0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Block"));
+        if (hit.collider == null)
+        {
+            transform.Translate(moveDelta.x * Time.deltaTime, 0,0);
+        }
     }
 }
