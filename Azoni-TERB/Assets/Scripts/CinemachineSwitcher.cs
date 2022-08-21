@@ -20,7 +20,7 @@ public class CinemachineSwitcher : MonoBehaviour
 
     public void CameraSwitcher()
     {
-        canva.SetActive(false);
+      canva.SetActive(false);
         if (ActiveCamera)
         {
             vcam1.Priority = 0;
