@@ -6,7 +6,7 @@ public class TrashManager : MonoBehaviour
 {
     //este se explica solo :v
     [SerializeField] public string type;
-
+    [SerializeField] public string [] characteristics = null;
     public string [] states = {"Grabbed","Dropped","Process"};
 
     public string currentState;  

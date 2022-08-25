@@ -1,23 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StationManager : MonoBehaviour
 {
+    [SerializeField] ItemTimerHandeler ith;
     //point where the object/trash will float on top of the station
     [SerializeField] Transform objPoint;
     //definition of the item counter variables
     public int itemCount, minItemCount = 0, maxItemCount;
     //list to store the items/trash
-    List<GameObject> items = new List<GameObject>();
+    [SerializeField]List<GameObject> items = new List<GameObject>();
 
     //definition of the station types and their maximum item capability
-    Dictionary <string, int> types = new Dictionary<string, int>() {
-        {"T1",3},
-        {"T2",1},
-        {"T3",2},
-        {"T4",4},
-        {"T5",1}
+    [SerializeField] Dictionary <string, int> types = new Dictionary<string, int>() {
+        {"Wash",1},
+        {"Dry",1},
+        {"Shred",1},
+        {"Melt",1},
+        {"Compress",1},
+        {"Station",1}
     } ;
     //at the start of the scene set the number of items to the minimun value
     // get the transform component of the object point
@@ -50,10 +53,35 @@ public class StationManager : MonoBehaviour
     public void AddItem(GameObject obj){
         int count = itemCount + 1;
         if (count <= maxItemCount){
-            itemCount++;
-            items.Add(obj);
+            itemCount++;       
+            CheckObj(obj);
         }   
     }
+
+    private void CheckObj(GameObject obj)
+    {
+        TrashManager tm = obj.GetComponent<TrashManager>();
+        if(tm.characteristics != null){
+            print("okok");
+            for(int i = 0;i < tm.characteristics.Length; i++){
+                if(tm.characteristics[i] == gameObject.name){
+                    if(tm.characteristics[0] == gameObject.name && tm.currentState == tm.states[2]){
+                        tm.currentState = gameObject.name;
+                        items.Add(obj);
+                        print("preOK");
+                        //set timer count down
+                        ith.AddItem(obj);
+                    }
+                }else {
+                    if (tm.currentState == tm.states[2]){
+                        items.Add(obj);
+                    }
+                }
+            }
+        }
+        
+    }
+
     // Return the last object of the list when called and then delete it
     public GameObject RestItem(){
         GameObject obj;
@@ -61,6 +89,7 @@ public class StationManager : MonoBehaviour
             obj = items[items.Count - 1];      
             items.RemoveAt(items.Count - 1);
             itemCount--;
+            ith.RestItem(obj);
         }else{
             return null;
         }   

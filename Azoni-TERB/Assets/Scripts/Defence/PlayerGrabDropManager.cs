@@ -73,33 +73,39 @@ public class PlayerGrabDropManager : MonoBehaviour
 
             StationManager stm = hitObj.GetComponent<StationManager>();
             
-            if(currentState == states[1] && stm.itemCount > stm.minItemCount){
+            if(currentState == states[1] && stm.itemCount > stm.minItemCount && currenttrm == null){
 
                 currentState = states[0];
                 //grab item
                 GameObject obje = stm.RestItem();
+                currenttrm = obje.GetComponent<TrashManager>();
+                currenttrm.currentState = currenttrm.states[0];
                 obj = obje.transform;
                 currentHitObj = obje;
 
             }
-            else if (currentState == states[0] && stm.itemCount <= stm.maxItemCount && stm.itemCount >= stm.minItemCount){
-                currentState = states[1];
-                Debug.Log("Deb");
-
+            else if (currentState == states[0] && stm.itemCount < stm.maxItemCount && stm.itemCount >= stm.minItemCount){
+                if (currenttrm != null){
+                    currentState = states[1];
+                    currenttrm.currentState = currenttrm.states[2];
+                    currenttrm = null;
+                    obj = null;
+                    stm.AddItem(this.currentHitObj);
+                    currentHitObj = null;
+                }
                 //leave item on top of the station
-                obj = null;
-                stm.AddItem(this.currentHitObj);
-                currentHitObj = null;
+                
             }else if (currentState == states[1] && stm.itemCount == stm.minItemCount){
                 Debug.Log("noo");
             }
 
-        } else if(hitObj.GetComponent<TrashManager>() != null && hitObj.GetComponent<StationManager>() == null){
+        }
+        else if(hitObj.GetComponent<TrashManager>() != null && hitObj.GetComponent<StationManager>() == null){
 
             TrashManager trm = hitObj.GetComponent<TrashManager>();
-            currenttrm = trm;
-            Debug.Log("hit");
+            
             if (currentState == states[1] && trm.currentState == trm.states[1]){
+                currenttrm = trm;
                 currentState = states[0];
                 trm.currentState = trm.states[0];
                 //grab item
@@ -107,8 +113,12 @@ public class PlayerGrabDropManager : MonoBehaviour
                 obj = currentHitObj.transform;
 
             } 
+            else if (currentState == states[0] && trm.currentState == trm.states[1]){
+                print("Not grab");
+            }
 
-        } else {
+        } 
+        else {
 
             //not an interactable object
 
