@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerGrabDropManager : MonoBehaviour
 {
+    [SerializeField] Material glowMat;
     [SerializeField] ItemTimerHandeler ith;
     // Point in space where you can drop an item and where you are gonna carry it
     [SerializeField] Transform objGrabPoint, objDropPoint;
@@ -36,8 +37,21 @@ public class PlayerGrabDropManager : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDist)){
             hitObj =  hit.transform.gameObject;
             Vector3 forward = transform.TransformDirection(Vector3.forward) * rayDist;
-            Debug.DrawRay(transform.position, forward, Color.green);       
+            Debug.DrawRay(transform.position, forward, Color.green);
+            Transform [] children = hit.transform.gameObject.GetComponentsInChildren<Transform>();
+            for(int i = 0; i < children.Length; i++ ){
+                if (children[i].gameObject.name == "GlowMaterial"){
+                    children[i].gameObject.GetComponent<MeshRenderer>().material = glowMat;
+                }
+            }
+                  
         }else {
+            Transform [] objects= FindObjectsOfType<Transform>();
+            for(int i = 0;i < objects.Length;i++){
+                if (objects[i].gameObject.name == "GlowMaterial"){
+                    objects[i].gameObject.GetComponent<MeshRenderer>().material = null;
+                }
+            }
             hitObj = null;
         }
         GrabItem();
