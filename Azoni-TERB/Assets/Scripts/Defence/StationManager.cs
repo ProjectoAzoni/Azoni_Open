@@ -2,14 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StationManager : MonoBehaviour
 {
     [SerializeField] ItemTimerHandeler ith;
     //point where the object/trash will float on top of the station
-    [SerializeField] Transform objPoint;
+    [SerializeField] Transform objPoint, dropPoint;
+    [SerializeField] GameObject stationCanvas;
+    int timer;
     //definition of the item counter variables
     public int itemCount, minItemCount = 0, maxItemCount;
+
+    string myType;
     //list to store the items/trash
     [SerializeField]List<GameObject> items = new List<GameObject>();
 
@@ -29,6 +34,8 @@ public class StationManager : MonoBehaviour
     {
         itemCount = 0;
         objPoint = objPoint.GetComponent<Transform>();
+        dropPoint = dropPoint.GetComponent<Transform>();
+        if (stationCanvas != null) {stationCanvas.SetActive(false);}
         CheckMyType();
     }
 
@@ -36,24 +43,43 @@ public class StationManager : MonoBehaviour
     void Update()
     {
         if(itemCount > 0 && items.Count > 0){
-            items[0].transform.position = objPoint.position;
-        }
-        
+            if (items[0].activeSelf){
+                items[0].transform.position = objPoint.position;
+            }
+            for(int i = 0; i < items.Count; i++){
+                if(!items[i].activeSelf){
+                    itemCount--;
+                    items.RemoveAt(i);
+                }
+            }
+            if(stationCanvas.activeInHierarchy){
+                stationCanvas.GetComponentInChildren<Slider>().value += Time.unscaledDeltaTime;
+                if (stationCanvas.GetComponentInChildren<Slider>().value >= stationCanvas.GetComponentInChildren<Slider>().maxValue){
+                    
+                    List<string> myList = new List<string>(items[0].GetComponent<TrashManager>().characteristics);
+                    myList.RemoveAt(0);
+                    items[0].GetComponent<TrashManager>().characteristics = myList.ToArray();
+
+                    stationCanvas.GetComponentInChildren<Slider>().value = stationCanvas.GetComponentInChildren<Slider>().minValue;
+                    stationCanvas.SetActive(false);
+                }
+            }
+            
+        }        
     }
     //ckeck the if the name and type of the station conicide and set the max item capability
     void CheckMyType(){
         foreach(var key in types.Keys){
             if (gameObject.name == key){
                 maxItemCount = types[key];
-
+                myType = key;
             }
         }
     }
     // add an item to the storage list
     public void AddItem(GameObject obj){
         int count = itemCount + 1;
-        if (count <= maxItemCount){
-            itemCount++;       
+        if (count <= maxItemCount){       
             CheckObj(obj);
         }   
     }
@@ -64,19 +90,27 @@ public class StationManager : MonoBehaviour
         if(tm.characteristics != null){
             print("okok");
             for(int i = 0;i < tm.characteristics.Length; i++){
-                if(tm.characteristics[i] == gameObject.name){
+                if(tm.characteristics[i] == gameObject.name)
+                {
                     if(tm.characteristics[0] == gameObject.name && tm.currentState == tm.states[2]){
                         tm.currentState = gameObject.name;
+                        itemCount++;
                         items.Add(obj);
-                        print("preOK");
-                        //set timer count down
-                        ith.AddItem(obj);
-                    }
-                }else {
-                    if (tm.currentState == tm.states[2]){
-                        items.Add(obj);
+                        //set timer count up
+                        CheckTimeType(obj);
+                        
                     }
                 }
+            }
+            if (tm.currentState == tm.states[2] && myType == "Station"){
+                items.Add(obj);
+                itemCount++;
+            }
+            else
+            {
+                
+                tm.currentState = tm.states[1];
+                obj.transform.position = dropPoint.position;
             }
         }
         
@@ -89,10 +123,34 @@ public class StationManager : MonoBehaviour
             obj = items[items.Count - 1];      
             items.RemoveAt(items.Count - 1);
             itemCount--;
-            ith.RestItem(obj);
+            //ith.RestItem(obj);
         }else{
             return null;
         }   
         return obj;
+    }
+
+    void CheckTimeType(GameObject obj){
+        TrashManager tm = obj.GetComponent<TrashManager>();
+        if (myType == "Wash" && tm.myType == tm.types[0]){
+            timer = 20;
+        }else if (myType == "Wash" && tm.myType == tm.types[2]){
+            timer = 20;
+        }else if (myType == "Wash" && tm.myType == tm.types[3]){
+            timer = 20;
+        }else if (myType == "Dry" && tm.myType == tm.types[0]){
+            timer = 40;
+        }else if (myType == "Dry" && tm.myType == tm.types[2]){
+            timer = 40;
+        }else if (myType == "Dry" && tm.myType == tm.types[3]){
+            timer = 40;
+        }else if (myType == "Shred" && tm.myType == tm.types[1]){
+            timer = 30;
+        }else if (myType == "Shred" && tm.myType == tm.types[4]){
+            timer = 30;
+        }
+        stationCanvas.GetComponentInChildren<Slider>().minValue = 0;
+        stationCanvas.GetComponentInChildren<Slider>().maxValue = timer;
+        stationCanvas.SetActive(true);
     }
 }

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerGrabDropManager : MonoBehaviour
 {
+    [SerializeField] ItemTimerHandeler ith;
     // Point in space where you can drop an item and where you are gonna carry it
     [SerializeField] Transform objGrabPoint, objDropPoint;
     // distance to activate the object in fron of the player
     [SerializeField] float rayDist = 2f;
     // definition of Player states: grabbing and dropping an object
-    private string [] states = {"Grabbing","Dropping"};
+    public string [] states = {"Grabbing","Dropping"};
     // the current state of the player
     public string currentState;
     //definition of the object that has been hit and the past hit object
@@ -111,7 +112,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                 //grab item
                 currentHitObj = hitObj;
                 obj = currentHitObj.transform;
-
+                ith.AddItem(currentHitObj);
             } 
             else if (currentState == states[0] && trm.currentState == trm.states[1]){
                 print("Not grab");
@@ -123,7 +124,46 @@ public class PlayerGrabDropManager : MonoBehaviour
             //not an interactable object
 
         }
+        switch (hitObj.name){
+            case "Green":
+                if(currentState == states[0] && currenttrm.myThrowPlace == currenttrm.throwPlaces[0]&& currenttrm.characteristics.Length == 0){
+                    //score
+                    obj = null;
+                    currentHitObj.SetActive(false);
+                    ith.RestItem(currentHitObj);
+                    currentState = states[1];
+                    currentHitObj = null;
+                    currenttrm = null;
+                }
+                return;
+            case "White":
+                if(currentState == states[0] && currenttrm.myThrowPlace == currenttrm.throwPlaces[1]&& currenttrm.characteristics.Length == 0){
+                    //score
+                    obj = null;
+                    currentHitObj.SetActive(false);
+                    ith.RestItem(currentHitObj);
+                    currentState = states[1];
+                    currentHitObj = null;
+                    currenttrm = null;
+                }
+                return;
+            case "Black":
+                if(currentState == states[0] && currenttrm.myThrowPlace == currenttrm.throwPlaces[2] && currenttrm.characteristics.Length == 0){
+                    //score
+                    obj = null;
+                    currentHitObj.SetActive(false);
+                    ith.RestItem(currentHitObj);
+                    currentState = states[1];
+                    currentHitObj = null;
+                    currenttrm = null;
+                }
+                return;
+            default:
+                print("def");
+                return;
+        }
     }
+
 
     //Handles the grab of the object if there is an object and the player state is grabbing
     void GrabItem(){
