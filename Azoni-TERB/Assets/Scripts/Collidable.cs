@@ -15,8 +15,10 @@ public class Collidable : MonoBehaviour
         boxCollider1 = GetComponent<BoxCollider2D>();
     }
 
+    
     protected virtual void Update()
     {
+        //collision system
         boxCollider1.OverlapCollider(filter, hits);
 
         for (int i = 0; i < hits.Length; i++)

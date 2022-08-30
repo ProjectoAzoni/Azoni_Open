@@ -9,10 +9,12 @@ public class Movement2d : MonoBehaviour
     private Vector3 moveDelta;
     private RaycastHit2D hit;
     public float moveSpeed;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();  
+        boxCollider = GetComponent<BoxCollider2D>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -22,24 +24,30 @@ public class Movement2d : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         moveDelta = new Vector3(x, y, 0)*moveSpeed;
+        //movement system
+        /*
         if (moveDelta.x > 0)
         {
             transform.localScale = Vector3.one;
+            transform.Translate(1, 0, 0);
 
         }else if (moveDelta.x < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-        }
+           
+        }*/
+
+        //collision system
         hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(0,moveDelta.y),Mathf.Abs(moveDelta.y*Time.deltaTime),LayerMask.GetMask("Actor","Block"));
         if (hit.collider == null)
         {
-            transform.Translate(0, moveDelta.y * Time.deltaTime , 0);
+            player.transform.Translate(0, moveDelta.y * Time.deltaTime , 0);
 
         }
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0, new Vector2(moveDelta.x,0), Mathf.Abs(moveDelta.x * Time.deltaTime), LayerMask.GetMask("Actor", "Block"));
         if (hit.collider == null)
         {
-            transform.Translate(moveDelta.x * Time.deltaTime, 0,0);
+            player.transform.Translate(moveDelta.x * Time.deltaTime, 0,0);
         }
     }
 }
