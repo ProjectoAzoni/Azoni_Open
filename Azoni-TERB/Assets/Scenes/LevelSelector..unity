@@ -355,6 +355,9 @@ MonoBehaviour:
   - cuando sepa como
   dialoguePanel: {fileID: 1093933342}
   dialogueText: {fileID: 1260422656}
+  isLevelUnlocked: 0
+  tiempo: 0
+  Scene: lvl1
   typingTime: 0.05
 --- !u!1 &463882369
 GameObject:
