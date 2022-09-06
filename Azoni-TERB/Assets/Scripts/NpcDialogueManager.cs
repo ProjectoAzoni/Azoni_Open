@@ -13,6 +13,11 @@ public class NpcDialogueManager : MonoBehaviour
     private bool didDialougeStart;
     private int index;
 
+    void Start()
+    {
+        dialoguePanel.SetActive(false);
+    }
+
     public float typingTime = 0.05f;
     void Update()
     {
