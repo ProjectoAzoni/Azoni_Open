@@ -55,12 +55,18 @@ public class NpcDialogueManager : MonoBehaviour
         {
             didDialougeStart = false;
             dialoguePanel.SetActive(false);
-        }
 
-        if (isLevelUnlocked)
-        {
-            StartCoroutine(Waitfor(tiempo));
+
+            if (isLevelUnlocked)
+            {
+                StartCoroutine(Waitfor(tiempo));
+            }
         }
+    }
+    IEnumerator Waitfor(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        SceneController.GoToScene(Scene);
     }
     private IEnumerator ShowLine()
     {
@@ -71,11 +77,7 @@ public class NpcDialogueManager : MonoBehaviour
             yield return new WaitForSeconds(typingTime);
         }
     }
-    IEnumerator Waitfor (float tiempo)
-    {
-        yield return new WaitForSeconds(tiempo);
-        SceneController.GoToScene(Scene);
-    }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
