@@ -5,7 +5,8 @@ using TMPro;
 
 public class NpcDialogueManager : MonoBehaviour
 {
-    [SerializeField,TextArea(4,6)] private string[] dialogueLines;
+    [SerializeField,TextArea(4,6)] private string[] dialogueLinesLocked;
+    [SerializeField, TextArea(4, 6)] private string[] dialogueLinesUnlocked;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
 
@@ -15,68 +16,85 @@ public class NpcDialogueManager : MonoBehaviour
     public float tiempo;
     public string Scene;
     private int index;
+    public float typingTime = 0.05f;
 
     void Start()
     {
         dialoguePanel.SetActive(false);
+    
     }
 
-    public float typingTime = 0.05f;
+
     void Update()
     {
-        if (isPlayerInRange && Input.GetButtonDown("Jump"))
+        if (isPlayerInRange && Input.GetButtonDown("Jump") && !isLevelUnlocked)
         {
             if (!didDialougeStart)
             {
-                StartDialouge();
+                StartDialouge(dialogueLinesLocked);
             }
-            else if (dialogueText.text == dialogueLines[index])
+            else if (dialogueText.text == dialogueLinesLocked[index])
             {
-                NextDialogueLine();
+                NextDialogueLine(dialogueLinesLocked);
+
+            }
+        }
+        else if (isPlayerInRange && Input.GetButtonDown("Jump") && isLevelUnlocked)
+        {
+            if (!didDialougeStart)
+            {
+                StartDialouge(dialogueLinesUnlocked);
+            }
+            else if (dialogueText.text == dialogueLinesUnlocked[index])
+            {
+                NextDialogueLine(dialogueLinesUnlocked);
 
             }
         }
     }
-    private void StartDialouge()
+    private void StartDialouge(string[] dialogue)
     {
         didDialougeStart = true;
         dialoguePanel.SetActive(true);
         index = 0;
-        StartCoroutine(ShowLine());
+        StartCoroutine(ShowLine(dialogue));
     }
-    private void NextDialogueLine()
+
+
+    private void NextDialogueLine(string[] dialogue)
     {
         index++;
-        if (index < dialogueLines.Length)
+        if (index < dialogue.Length)
         {
-            StartCoroutine(ShowLine());
+            StartCoroutine(ShowLine(dialogue));
         }
         else
         {
             didDialougeStart = false;
             dialoguePanel.SetActive(false);
-
-
             if (isLevelUnlocked)
             {
                 StartCoroutine(Waitfor(tiempo));
             }
         }
     }
-    IEnumerator Waitfor(float tiempo)
-    {
-        yield return new WaitForSeconds(tiempo);
-        SceneController.GoToScene(Scene);
-    }
-    private IEnumerator ShowLine()
+
+    private IEnumerator ShowLine(string[] dialogue)
     {
         dialogueText.text = string.Empty;
-        foreach(char ch in dialogueLines[index])
+        foreach (char ch in dialogue[index])
         {
             dialogueText.text += ch;
             yield return new WaitForSeconds(typingTime);
         }
     }
+
+    IEnumerator Waitfor(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        SceneController.GoToScene(Scene);
+    }
+
    
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571385, b: 0.30692253, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -350,13 +350,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dccbe95ba571b04bbb6775892abea1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueLines:
-  - te llevare al mundo
-  - cuando sepa como
+  dialogueLinesLocked:
+  - NPC:Traeme lo que necesito
+  - Y te llevare al nivel 1
+  dialogueLinesUnlocked:
+  - 'NPC: te fecilito'
+  - me has traido lo que necesito
+  - nos vamos
   dialoguePanel: {fileID: 1093933342}
   dialogueText: {fileID: 1260422656}
-  isLevelUnlocked: 0
-  tiempo: 0
+  isLevelUnlocked: 1
+  tiempo: 0.35
   Scene: lvl1
   typingTime: 0.05
 --- !u!1 &463882369
