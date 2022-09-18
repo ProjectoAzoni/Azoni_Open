@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemsManager : MonoBehaviour
 {
@@ -95,6 +96,12 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] public GameObject ItemPrefab;
     [SerializeField] Transform ItemsSpawnStartPos, ParentObj;
     [SerializeField] ItemTimerHandeler ith;
+    [SerializeField] Text countDownText;
+    [SerializeField] GameObject endCanvas;
+
+    float timeRemaining = 300;
+    public bool timerIsRunning = false;
+    
 
     public List<GameObject> ItemsObj = new List<GameObject>();
 
@@ -110,7 +117,7 @@ public class ItemsManager : MonoBehaviour
     }
     void Start()
     {
-        
+        timerIsRunning = true;
     }
 
     private void setItems()
@@ -142,7 +149,21 @@ public class ItemsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                Debug.Log("Time has run out!");
+                timeRemaining = 0;
+                timerIsRunning = false;
+                endCanvas.SetActive(true);
+            }
+        }
     }
     void OnDrawGizmosSelected()
     {
@@ -153,5 +174,12 @@ public class ItemsManager : MonoBehaviour
         Gizmos.DrawCube(new Vector3(-2.5f,0,-2f), new Vector3(6, 1, 8));
         Gizmos.DrawCube(new Vector3(4f,0,-2f), new Vector3(6, 1, 8));
         Gizmos.DrawCube(new Vector3(-9f,0,-2f), new Vector3(6, 1, 8));
+    }
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        countDownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
