@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerGrabDropManager : MonoBehaviour
 {
     [SerializeField] Material glowMat;
+    [SerializeField] ItemsManager itemsManager;
     [SerializeField] ItemTimerHandeler ith;
     // Point in space where you can drop an item and where you are gonna carry it
     [SerializeField] Transform objGrabPoint, objDropPoint;
@@ -140,7 +141,7 @@ public class PlayerGrabDropManager : MonoBehaviour
         }
         switch (hitObj.name){
             case "Green":
-                if(currentState == states[0] && currenttrm.myThrowPlace == currenttrm.throwPlaces[0]&& currenttrm.characteristics.Length == 0){
+                if(currentState == states[0] && currenttrm.myThrowPlace == itemsManager.bins0[0] && currenttrm.characteristics.Length == 0){
                     //score
                     obj = null;
                     currentHitObj.SetActive(false);
@@ -151,7 +152,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                 }
                 return;
             case "White":
-                if(currentState == states[0] && currenttrm.myThrowPlace == currenttrm.throwPlaces[1]&& currenttrm.characteristics.Length == 0){
+                if(currentState == states[0] && currenttrm.myThrowPlace == itemsManager.bins0[1]&& currenttrm.characteristics.Length == 0){
                     //score
                     obj = null;
                     currentHitObj.SetActive(false);
@@ -162,7 +163,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                 }
                 return;
             case "Black":
-                if(currentState == states[0] && currenttrm.myThrowPlace == currenttrm.throwPlaces[2] && currenttrm.characteristics.Length == 0){
+                if(currentState == states[0] && currenttrm.myThrowPlace == itemsManager.bins0[2] && currenttrm.characteristics.Length == 0){
                     //score
                     obj = null;
                     currentHitObj.SetActive(false);

@@ -9,7 +9,7 @@ public class TrashManager : MonoBehaviour
     public string myType;   
     public string [] throwPlaces = {"Green", "White","Black"};
     public string myThrowPlace;
-    [SerializeField] public string [] characteristics;
+     public string [] characteristics;
     public string [] states = {"Grabbed","Dropped","Process"};
     public bool show = false;
     public string currentState;
@@ -19,7 +19,7 @@ public class TrashManager : MonoBehaviour
     void Start()
     {
         currentState = states[1];
-        SetMyType();
+
     }
 
     // Update is called once per frame
