@@ -173,7 +173,6 @@ public class PlayerGrabDropManager : MonoBehaviour
                 }
                 return;
             default:
-                print("def");
                 return;
         }
     }

@@ -12,7 +12,9 @@ public class TrashManager : MonoBehaviour
     [SerializeField] public string [] characteristics;
     public string [] states = {"Grabbed","Dropped","Process"};
     public bool show = false;
-    public string currentState;  
+    public string currentState;
+
+    public float myTimer=0f;  
     // Start is called before the first frame update
     void Start()
     {

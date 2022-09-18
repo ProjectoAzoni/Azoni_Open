@@ -43,29 +43,46 @@ public class StationManager : MonoBehaviour
     void Update()
     {
         if(itemCount > 0 && items.Count > 0){
-            if (items[0].activeSelf){
+            if (items[0].activeInHierarchy){
                 items[0].transform.position = objPoint.position;
             }
             for(int i = 0; i < items.Count; i++){
-                if(!items[i].activeSelf){
+                if(!items[i].activeInHierarchy){
                     itemCount--;
                     items.RemoveAt(i);
                 }
             }
             if(stationCanvas.activeInHierarchy){
-                stationCanvas.GetComponentInChildren<Slider>().value += Time.unscaledDeltaTime;
-                if (stationCanvas.GetComponentInChildren<Slider>().value >= stationCanvas.GetComponentInChildren<Slider>().maxValue){
+                if(items[0].GetComponent<TrashManager>().myTimer == 0f)
+                {
+                    stationCanvas.GetComponentInChildren<Slider>().value += Time.unscaledDeltaTime;
+                    items[0].GetComponent<TrashManager>().myTimer = stationCanvas.GetComponentInChildren<Slider>().value;
                     
-                    List<string> myList = new List<string>(items[0].GetComponent<TrashManager>().characteristics);
-                    myList.RemoveAt(0);
-                    items[0].GetComponent<TrashManager>().characteristics = myList.ToArray();
-
-                    stationCanvas.GetComponentInChildren<Slider>().value = stationCanvas.GetComponentInChildren<Slider>().minValue;
-                    stationCanvas.SetActive(false);
+                }else {
+                    stationCanvas.GetComponentInChildren<Slider>().value = items[0].GetComponent<TrashManager>().myTimer;
+                    stationCanvas.GetComponentInChildren<Slider>().value += Time.unscaledDeltaTime;
+                    items[0].GetComponent<TrashManager>().myTimer = stationCanvas.GetComponentInChildren<Slider>().value;
+                    if (stationCanvas.GetComponentInChildren<Slider>().value >= stationCanvas.GetComponentInChildren<Slider>().maxValue)
+                    {
+                        List<string> myList = new List<string>(items[0].GetComponent<TrashManager>().characteristics);
+                        myList.RemoveAt(0);
+                        items[0].GetComponent<TrashManager>().characteristics = myList.ToArray();
+                        items[0].GetComponent<TrashManager>().myTimer = 0f;
+                        stationCanvas.GetComponentInChildren<Slider>().value = stationCanvas.GetComponentInChildren<Slider>().minValue;
+                        stationCanvas.SetActive(false);
+                    }
                 }
+                
             }
             
-        }        
+        } 
+        else{
+            if(stationCanvas.activeInHierarchy)
+            {
+                stationCanvas.GetComponentInChildren<Slider>().value = stationCanvas.GetComponentInChildren<Slider>().minValue;
+                stationCanvas.SetActive(false);
+            }
+        }       
     }
     //ckeck the if the name and type of the station conicide and set the max item capability
     void CheckMyType(){
@@ -88,7 +105,6 @@ public class StationManager : MonoBehaviour
     {
         TrashManager tm = obj.GetComponent<TrashManager>();
         if(tm.characteristics != null){
-            print("okok");
             for(int i = 0;i < tm.characteristics.Length; i++){
                 if(tm.characteristics[i] == gameObject.name)
                 {
@@ -123,7 +139,6 @@ public class StationManager : MonoBehaviour
             obj = items[items.Count - 1];      
             items.RemoveAt(items.Count - 1);
             itemCount--;
-            //ith.RestItem(obj);
         }else{
             return null;
         }   

@@ -18,6 +18,6 @@ public class PlayerMovement2Controller : MonoBehaviour
     }
     void FixedUpdate(){
         transform.position  = new Vector3(transform.position.x + JoystickLeft2.positionX / 10, transform.position.y, transform.position.z + JoystickLeft2.positionY / 10);
-		transform.rotation = Quaternion.AngleAxis(Mathf.Rad2Deg * JoystickRight2.angle + 180, Vector3.up);
+		transform.rotation = Quaternion.AngleAxis(Mathf.Rad2Deg * JoystickLeft2.angle + 180, Vector3.up);
     }
 }
