@@ -94,6 +94,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] int itemNum = 10;
     [SerializeField] public GameObject ItemPrefab;
     [SerializeField] Transform ItemsSpawnStartPos, ParentObj;
+    [SerializeField] ItemTimerHandeler ith;
 
     public List<GameObject> ItemsObj = new List<GameObject>();
 
@@ -131,9 +132,26 @@ public class ItemsManager : MonoBehaviour
         }
     }
 
+    public void MoveItem(){
+        int numb  = UnityEngine.Random.Range(0,2);
+        Vector3 [] positionBlocks = {new Vector3(-2.5f,0,-2f), new Vector3(4f,0,-2f), new Vector3(-9f,0,-2f)};
+        Vector3 newPos = positionBlocks[numb] + new Vector3(UnityEngine.Random.Range(-6/2,6/2),0.5f,UnityEngine.Random.Range(-8/2,8/2));
+        ItemsObj[0].transform.position = newPos;
+        ith.AddItem(ItemsObj[0]);
+    }
     // Update is called once per frame
     void Update()
     {
         
+    }
+    void OnDrawGizmosSelected()
+    {
+        // Draw a semitransparent blue cube at the transforms position
+        /*Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(new Vector3(0,0,0), new Vector3(80, 1, 20));*/
+        Gizmos.color = new Color(0, 1, 0, 0.5f);
+        Gizmos.DrawCube(new Vector3(-2.5f,0,-2f), new Vector3(6, 1, 8));
+        Gizmos.DrawCube(new Vector3(4f,0,-2f), new Vector3(6, 1, 8));
+        Gizmos.DrawCube(new Vector3(-9f,0,-2f), new Vector3(6, 1, 8));
     }
 }

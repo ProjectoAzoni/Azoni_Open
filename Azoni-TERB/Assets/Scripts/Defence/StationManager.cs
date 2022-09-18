@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class StationManager : MonoBehaviour
 {
-    [SerializeField] ItemTimerHandeler ith;
+    [SerializeField] ItemsManager im;
     //point where the object/trash will float on top of the station
     [SerializeField] Transform objPoint, dropPoint;
     [SerializeField] GameObject stationCanvas;
@@ -147,7 +147,8 @@ public class StationManager : MonoBehaviour
 
     void CheckTimeType(GameObject obj){
         TrashManager tm = obj.GetComponent<TrashManager>();
-        if (myType == "Wash" && tm.myType == tm.types[0]){
+        timer = 20;
+        /*if (myType == "Wash" && tm.myType == im.categories0[0]){
             timer = 20;
         }else if (myType == "Wash" && tm.myType == tm.types[2]){
             timer = 20;
@@ -163,7 +164,7 @@ public class StationManager : MonoBehaviour
             timer = 30;
         }else if (myType == "Shred" && tm.myType == tm.types[4]){
             timer = 30;
-        }
+        }*/
         stationCanvas.GetComponentInChildren<Slider>().minValue = 0;
         stationCanvas.GetComponentInChildren<Slider>().maxValue = timer;
         stationCanvas.SetActive(true);

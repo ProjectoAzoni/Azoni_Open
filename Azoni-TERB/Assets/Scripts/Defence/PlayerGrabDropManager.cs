@@ -127,7 +127,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                 //grab item
                 currentHitObj = hitObj;
                 obj = currentHitObj.transform;
-                ith.AddItem(currentHitObj);
+                //ith.AddItem(currentHitObj);
             } 
             else if (currentState == states[0] && trm.currentState == trm.states[1]){
                 print("Not grab");
