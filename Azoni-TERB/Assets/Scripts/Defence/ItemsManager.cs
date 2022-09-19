@@ -99,6 +99,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] Text countDownText;
     [SerializeField] GameObject endCanvas;
 
+    //time on seconds 300 = 5min
     float timeRemaining = 300;
     public bool timerIsRunning = false;
     
