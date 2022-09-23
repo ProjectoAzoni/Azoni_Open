@@ -7,7 +7,7 @@ public class TrashManager : MonoBehaviour
     //este se explica solo :v
     public string [] types = {"Plastic","Carton","Metal","Glass","Paper","Organic", "Other"};
     public string myType;   
-    public string [] throwPlaces = {"Green", "White","Black"};
+    public string [] throwPlaces;
     public string myThrowPlace;
      public string [] characteristics;
     public string [] states = {"Grabbed","Dropped","Process"};

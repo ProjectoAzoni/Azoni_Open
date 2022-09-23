@@ -98,6 +98,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] ItemTimerHandeler ith;
     [SerializeField] Text countDownText;
     [SerializeField] GameObject endCanvas;
+    [SerializeField] float itemSpawnTime, ItemSpawnRepeatRate;
 
     //time on seconds 300 = 5min
     float timeRemaining = 300;
@@ -112,6 +113,7 @@ public class ItemsManager : MonoBehaviour
         for (int i = 0; i < itemNum; i++)
         {
             GameObject obj = Instantiate(ItemPrefab, ItemsSpawnStartPos.position, Quaternion.identity, ParentObj);
+            obj.GetComponent<TrashManager>().throwPlaces = bins0;
             ItemsObj.Add(obj);
         }
         setItems();
@@ -119,6 +121,7 @@ public class ItemsManager : MonoBehaviour
     void Start()
     {
         timerIsRunning = true;
+        InvokeRepeating("MoveItem",itemSpawnTime,ItemSpawnRepeatRate);
     }
 
     private void setItems()
@@ -141,11 +144,15 @@ public class ItemsManager : MonoBehaviour
     }
 
     public void MoveItem(){
-        int numb  = UnityEngine.Random.Range(0,2);
-        Vector3 [] positionBlocks = {new Vector3(-2.5f,0,-2f), new Vector3(4f,0,-2f), new Vector3(-9f,0,-2f)};
-        Vector3 newPos = positionBlocks[numb] + new Vector3(UnityEngine.Random.Range(-6/2,6/2),0.5f,UnityEngine.Random.Range(-8/2,8/2));
-        ItemsObj[0].transform.position = newPos;
-        ith.AddItem(ItemsObj[0]);
+        if(ItemsObj.Count > 0){
+            int numb  = UnityEngine.Random.Range(0,2);
+            Vector3 [] positionBlocks = {new Vector3(-2.5f,0,-2f), new Vector3(4f,0,-2f), new Vector3(-9f,0,-2f)};
+            Vector3 newPos = positionBlocks[numb] + new Vector3(UnityEngine.Random.Range(-6/2,6/2),0.5f,UnityEngine.Random.Range(-8/2,8/2));
+            ItemsObj[0].transform.position = newPos;
+            ith.AddItem(ItemsObj[0]);
+            ItemsObj.RemoveAt(0);
+        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -183,4 +190,5 @@ public class ItemsManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
         countDownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+    
 }

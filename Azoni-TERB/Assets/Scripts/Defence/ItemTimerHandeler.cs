@@ -12,6 +12,7 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField]List<GameObject> items = new List<GameObject>(); 
     [SerializeField]List<GameObject> panelItems = new List<GameObject>();
     [SerializeField]List<float> timers = new List<float>(); 
+    [SerializeField] Sprite [] characSprites;
 
     [Header("Time for green, white and black")]
     [SerializeField]public int [] trashTimers;
@@ -21,28 +22,61 @@ public class ItemTimerHandeler : MonoBehaviour
     void Start()
     {
         
+         
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if(panelItems.Count > 0 & timers.Count > 0 & items.Count > 0){
-            
-            for(int i = 0; i < timers.Count; i++){
-                panelItems[i].GetComponentInChildren<Slider>().value -= Time.unscaledDeltaTime;
-                if (panelItems[i].GetComponentInChildren<Slider>().value <= 0){
-                    
-                    if (pgd.currentState == pgd.states[0]) {
-                        pgd.currentState = pgd.states[1];
+        if(Time.timeScale == 1.0f){
+            if(panelItems.Count > 0 & timers.Count > 0 & items.Count > 0){
+                for(int i = 0; i < timers.Count; i++){
+                    panelItems[i].GetComponentInChildren<Slider>().value -= Time.unscaledDeltaTime;
+                    if (panelItems[i].GetComponentInChildren<Slider>().value <= 0){
+                        
+                        if (pgd.currentState == pgd.states[0]) {
+                            pgd.currentState = pgd.states[1];
+                        }
+                        items[i].SetActive(false);
+                        panelItems[i].SetActive(false);
+                        items.RemoveAt(i);
+                        panelItems.RemoveAt(i);
+                        timers.RemoveAt(i);                    
+                    } 
+                }
+                for (int k = 0; k < items.Count; k++)
+                {
+                    TrashManager tm = items[k].GetComponent<TrashManager>();
+                    Transform [] objs = panelItems[k].GetComponentsInChildren<Transform>(true);
+                    List<Transform> objsChar= new List<Transform>();
+                    for (int m = 0; m < objs.Length; m++)
+                    {
+                        if(objs[m].name == "Wash"||objs[m].name == "Dry"||objs[m].name == "Shred"||objs[m].name == "Melt"||objs[m].name == "Compress"){
+                            objsChar.Add(objs[m]);
+                        }
                     }
-                    items[i].SetActive(false);
-                    panelItems[i].SetActive(false);
-                    items.RemoveAt(i);
-                    panelItems.RemoveAt(i);
-                    timers.RemoveAt(i);                    
-                } 
+                    if(objsChar.Count > 0){
+                        for (int j = 0; j < objsChar.Count; j++){
+                            objsChar[j].gameObject.SetActive(false);
+                            for (int i = 0; i < tm.characteristics.Length; i++){
+                                for (int h = 0; h < characSprites.Length; h++){
+                                    if(tm.characteristics.Length > 0){
+                                        if(tm.characteristics[i] == characSprites[h].name){
+                                            if(tm.characteristics[i] == objsChar[j].name){
+                                                objsChar[j].gameObject.SetActive(true);
+                                                Image sp =  objsChar[j].GetComponent<Image>();
+                                                sp.sprite = characSprites[h];
+                                            }
+                                        }
+                                    }  
+                                }
+                            }         
+                        }     
+                    }
+                }
             }
         }
+        
     }
     public void AddItem(GameObject item){
         TrashManager tm = item.GetComponent<TrashManager>();
@@ -69,6 +103,8 @@ public class ItemTimerHandeler : MonoBehaviour
     public void ShowItems(GameObject item){
         if (items.Count > 0){
             TrashManager tm = item.GetComponent<TrashManager>();
+            
+            
             int nume = 0;
             GameObject obj = Instantiate(itemPanelPrefab, new Vector3(showPanel.transform.position.x,showPanel.transform.position.y,showPanel.transform.position.z), Quaternion.identity, showPanel.transform);
             if (tm.myThrowPlace == tm.throwPlaces[0]){
