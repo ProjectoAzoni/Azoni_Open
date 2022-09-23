@@ -9,10 +9,14 @@ public class Collidable : MonoBehaviour
     private Collider2D[] hits = new Collider2D[10];
     public float tiempo;
        public string Scene;
+    public GameObject sceneManager;
+    SceneController sceneController;
 
     protected virtual void Start()
     {
         boxCollider1 = GetComponent<BoxCollider2D>();
+        sceneController = sceneManager.GetComponent<SceneController>();
+        sceneManager = GameObject.Find("SceneManager");
     }
 
     
@@ -43,6 +47,6 @@ public class Collidable : MonoBehaviour
     IEnumerator WaitFor(float time)
     {
         yield return new WaitForSeconds(time);
-        SceneController.GoToScene(Scene);
+        sceneController.GoToScene(Scene);
     }
 }

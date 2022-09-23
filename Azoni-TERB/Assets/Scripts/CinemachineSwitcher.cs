@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class CinemachineSwitcher : MonoBehaviour
 {
@@ -11,11 +12,15 @@ public class CinemachineSwitcher : MonoBehaviour
     public GameObject canva;
     public string Scene;
     public float tiempo;
+    public GameObject sceneManager;
+    SceneController sceneController;
     // Start is called before the first frame update
     void Start()
     {
         vcam1.Priority = 1;
         vcam2.Priority = 0;
+        sceneController = sceneManager.GetComponent<SceneController>();
+        sceneManager = GameObject.Find("SceneManager");
     }
 
     public void CameraSwitcher()
@@ -38,7 +43,7 @@ public class CinemachineSwitcher : MonoBehaviour
     IEnumerator WaitFor(float time)
     {
         yield return new WaitForSeconds(time);
-        SceneController.GoToScene(Scene);
+        sceneController.GoToScene(Scene);
     }
 }
 

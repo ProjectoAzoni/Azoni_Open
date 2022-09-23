@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Movement2d : MonoBehaviour
 {
@@ -9,21 +10,32 @@ public class Movement2d : MonoBehaviour
     private Vector3 moveDelta;
     private RaycastHit2D hit;
     public float moveSpeed;
+    
     private GameObject player;
+
+    private float x;
+    private float y;
+    public bool isTouchActive;
+    [SerializeField] GameObject ControlCanvas;
+    TouchControlManager2d touchControlManager2d;
     // Start is called before the first frame update
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         player = GameObject.Find("Player");
+        
+        touchControlManager2d = ControlCanvas.GetComponent<TouchControlManager2d>();
     }
 
     // Update is called once per frame
     void Update()
     {
+       // isTouchActive = touchControlManager2d.IsTouchActive();
+        TouchControl();
         
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        moveDelta = new Vector3(x, y, 0)*moveSpeed;
+       
+
+        moveDelta = new Vector3(x, y, 0) * moveSpeed;
         //movement system
         /*
         if (moveDelta.x > 0)
@@ -48,6 +60,19 @@ public class Movement2d : MonoBehaviour
         if (hit.collider == null)
         {
             player.transform.Translate(moveDelta.x * Time.deltaTime, 0,0);
+        }
+    }
+    void TouchControl()
+    {
+        if (isTouchActive)
+        {
+            x = touchControlManager2d.x;
+            y = touchControlManager2d.y;
+        }
+        else
+        {
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
         }
     }
 }

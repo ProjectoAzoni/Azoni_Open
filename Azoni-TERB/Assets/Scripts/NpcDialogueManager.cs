@@ -9,10 +9,16 @@ public class NpcDialogueManager : MonoBehaviour
     [SerializeField, TextArea(4, 6)] private string[] dialogueLinesUnlocked;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] GameObject sceneManager;
+    SceneController sceneController;
+    [SerializeField] GameObject ControlCanvas;
+    TouchControlManager2d touchControlManager2d;
 
     private bool isPlayerInRange;
     private bool didDialougeStart;
     public bool isLevelUnlocked;
+    public bool isUiButtonPressed;
+    public bool prueba;
     public float tiempo;
     public string Scene;
     private int index;
@@ -21,13 +27,19 @@ public class NpcDialogueManager : MonoBehaviour
     void Start()
     {
         dialoguePanel.SetActive(false);
+        sceneController = sceneManager.GetComponent<SceneController>();
     
+        touchControlManager2d = ControlCanvas.GetComponent<TouchControlManager2d>();
+
     }
 
 
     void Update()
     {
-        if (isPlayerInRange && Input.GetButtonDown("Jump") && !isLevelUnlocked)
+        isUiButtonPressed = touchControlManager2d.GetIsActionButtonPressed();
+        prueba = Input.GetButtonDown("Jump");
+        Debug.Log("boton ui"+isUiButtonPressed);
+        if (isPlayerInRange && IsBottonPushed() && !isLevelUnlocked)
         {
             if (!didDialougeStart)
             {
@@ -36,10 +48,9 @@ public class NpcDialogueManager : MonoBehaviour
             else if (dialogueText.text == dialogueLinesLocked[index])
             {
                 NextDialogueLine(dialogueLinesLocked);
-
             }
         }
-        else if (isPlayerInRange && Input.GetButtonDown("Jump") && isLevelUnlocked)
+        else if (isPlayerInRange && IsBottonPushed() && isLevelUnlocked)
         {
             if (!didDialougeStart)
             {
@@ -48,10 +59,26 @@ public class NpcDialogueManager : MonoBehaviour
             else if (dialogueText.text == dialogueLinesUnlocked[index])
             {
                 NextDialogueLine(dialogueLinesUnlocked);
-
             }
-        }
+        } 
     }
+
+
+    private bool IsBottonPushed()
+    {
+        bool pushed;
+        if (Input.GetButtonDown("Jump") || isUiButtonPressed)
+        {
+            pushed = true;
+        }else
+        {
+            pushed = false;
+        }
+        return pushed;
+    }
+
+  
+
     private void StartDialouge(string[] dialogue)
     {
         didDialougeStart = true;
@@ -68,7 +95,7 @@ public class NpcDialogueManager : MonoBehaviour
         {
             StartCoroutine(ShowLine(dialogue));
         }
-        else
+        else 
         {
             didDialougeStart = false;
             dialoguePanel.SetActive(false);
@@ -92,7 +119,7 @@ public class NpcDialogueManager : MonoBehaviour
     IEnumerator Waitfor(float tiempo)
     {
         yield return new WaitForSeconds(tiempo);
-        SceneController.GoToScene(Scene);
+        sceneController.GoToScene(Scene);
     }
 
    
