@@ -18,7 +18,6 @@ public class NpcDialogueManager : MonoBehaviour
     private bool didDialougeStart;
     public bool isLevelUnlocked;
     public bool isUiButtonPressed;
-    public bool prueba;
     public float tiempo;
     public string Scene;
     private int index;
@@ -37,8 +36,9 @@ public class NpcDialogueManager : MonoBehaviour
     void Update()
     {
         isUiButtonPressed = touchControlManager2d.GetIsActionButtonPressed();
-        prueba = Input.GetButtonDown("Jump");
-        Debug.Log("boton ui"+isUiButtonPressed);
+        
+
+
         if (isPlayerInRange && IsBottonPushed() && !isLevelUnlocked)
         {
             if (!didDialougeStart)
@@ -67,13 +67,15 @@ public class NpcDialogueManager : MonoBehaviour
     private bool IsBottonPushed()
     {
         bool pushed;
-        if (Input.GetButtonDown("Jump") || isUiButtonPressed)
+        if (Input.GetButtonDown("Jump") || touchControlManager2d.GetIsActionButtonPressed())
         {
             pushed = true;
+            
         }else
         {
             pushed = false;
         }
+        
         return pushed;
     }
 
@@ -91,6 +93,7 @@ public class NpcDialogueManager : MonoBehaviour
     private void NextDialogueLine(string[] dialogue)
     {
         index++;
+
         if (index < dialogue.Length)
         {
             StartCoroutine(ShowLine(dialogue));
@@ -104,6 +107,7 @@ public class NpcDialogueManager : MonoBehaviour
                 StartCoroutine(Waitfor(tiempo));
             }
         }
+        
     }
 
     private IEnumerator ShowLine(string[] dialogue)

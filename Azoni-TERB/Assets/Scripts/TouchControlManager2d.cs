@@ -76,16 +76,18 @@ public class TouchControlManager2d : MonoBehaviour
         }
     
 
+
+
     //ACTION BUTTON
-    public void OnPointerDown()
+    public void PointerClick()
     {
-        isActionButtonPressed= true;
-       
+        isActionButtonPressed = true;
+        StartCoroutine(Waitfor());
     }
-    public void OnPointerUp()
-    {
+    IEnumerator Waitfor()
+    { 
+        yield return new WaitForEndOfFrame();
         isActionButtonPressed = false;
-        
     }
     public bool GetIsActionButtonPressed()
     {
