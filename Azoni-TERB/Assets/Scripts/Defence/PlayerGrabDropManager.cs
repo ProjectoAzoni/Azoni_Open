@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerGrabDropManager : MonoBehaviour
 {
+    [SerializeField] Material glowMat;
+    [SerializeField] ItemsManager itemsManager;
+    [SerializeField] ItemTimerHandeler ith;
     // Point in space where you can drop an item and where you are gonna carry it
     [SerializeField] Transform objGrabPoint, objDropPoint;
     // distance to activate the object in fron of the player
     [SerializeField] float rayDist = 2f;
     // definition of Player states: grabbing and dropping an object
-    private string [] states = {"Grabbing","Dropping"};
+    public string [] states = {"Grabbing","Dropping"};
     // the current state of the player
     public string currentState;
     //definition of the object that has been hit and the past hit object
@@ -35,8 +38,21 @@ public class PlayerGrabDropManager : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDist)){
             hitObj =  hit.transform.gameObject;
             Vector3 forward = transform.TransformDirection(Vector3.forward) * rayDist;
-            Debug.DrawRay(transform.position, forward, Color.green);       
+            Debug.DrawRay(transform.position, forward, Color.green);
+            Transform [] children = hit.transform.gameObject.GetComponentsInChildren<Transform>();
+            for(int i = 0; i < children.Length; i++ ){
+                if (children[i].gameObject.name == "GlowMaterial"){
+                    children[i].gameObject.GetComponent<MeshRenderer>().material = glowMat;
+                }
+            }
+                  
         }else {
+            Transform [] objects= FindObjectsOfType<Transform>();
+            for(int i = 0;i < objects.Length;i++){
+                if (objects[i].gameObject.name == "GlowMaterial"){
+                    objects[i].gameObject.GetComponent<MeshRenderer>().material = null;
+                }
+            }
             hitObj = null;
         }
         GrabItem();
@@ -73,47 +89,95 @@ public class PlayerGrabDropManager : MonoBehaviour
 
             StationManager stm = hitObj.GetComponent<StationManager>();
             
-            if(currentState == states[1] && stm.itemCount > stm.minItemCount){
+            if(currentState == states[1] && stm.itemCount > stm.minItemCount && currenttrm == null){
 
                 currentState = states[0];
                 //grab item
                 GameObject obje = stm.RestItem();
+                currenttrm = obje.GetComponent<TrashManager>();
+                currenttrm.currentState = currenttrm.states[0];
                 obj = obje.transform;
                 currentHitObj = obje;
 
             }
-            else if (currentState == states[0] && stm.itemCount <= stm.maxItemCount && stm.itemCount >= stm.minItemCount){
-                currentState = states[1];
-                Debug.Log("Deb");
-
+            else if (currentState == states[0] && stm.itemCount < stm.maxItemCount && stm.itemCount >= stm.minItemCount){
+                if (currenttrm != null){
+                    currentState = states[1];
+                    currenttrm.currentState = currenttrm.states[2];
+                    currenttrm = null;
+                    obj = null;
+                    stm.AddItem(this.currentHitObj);
+                    currentHitObj = null;
+                }
                 //leave item on top of the station
-                obj = null;
-                stm.AddItem(this.currentHitObj);
-                currentHitObj = null;
+                
             }else if (currentState == states[1] && stm.itemCount == stm.minItemCount){
                 Debug.Log("noo");
             }
 
-        } else if(hitObj.GetComponent<TrashManager>() != null && hitObj.GetComponent<StationManager>() == null){
+        }
+        else if(hitObj.GetComponent<TrashManager>() != null && hitObj.GetComponent<StationManager>() == null){
 
             TrashManager trm = hitObj.GetComponent<TrashManager>();
-            currenttrm = trm;
-            Debug.Log("hit");
+            
             if (currentState == states[1] && trm.currentState == trm.states[1]){
+                currenttrm = trm;
                 currentState = states[0];
                 trm.currentState = trm.states[0];
                 //grab item
                 currentHitObj = hitObj;
                 obj = currentHitObj.transform;
-
+                //ith.AddItem(currentHitObj);
             } 
+            else if (currentState == states[0] && trm.currentState == trm.states[1]){
+                print("Not grab");
+            }
 
-        } else {
+        } 
+        else {
 
             //not an interactable object
 
         }
+        switch (hitObj.name){
+            case "Green":
+                if(currentState == states[0] && currenttrm.myThrowPlace == itemsManager.bins0[0] && currenttrm.characteristics.Length == 0){
+                    //score
+                    obj = null;
+                    currentHitObj.SetActive(false);
+                    ith.RestItem(currentHitObj);
+                    currentState = states[1];
+                    currentHitObj = null;
+                    currenttrm = null;
+                }
+                return;
+            case "White":
+                if(currentState == states[0] && currenttrm.myThrowPlace == itemsManager.bins0[1]&& currenttrm.characteristics.Length == 0){
+                    //score
+                    obj = null;
+                    currentHitObj.SetActive(false);
+                    ith.RestItem(currentHitObj);
+                    currentState = states[1];
+                    currentHitObj = null;
+                    currenttrm = null;
+                }
+                return;
+            case "Black":
+                if(currentState == states[0] && currenttrm.myThrowPlace == itemsManager.bins0[2] && currenttrm.characteristics.Length == 0){
+                    //score
+                    obj = null;
+                    currentHitObj.SetActive(false);
+                    ith.RestItem(currentHitObj);
+                    currentState = states[1];
+                    currentHitObj = null;
+                    currenttrm = null;
+                }
+                return;
+            default:
+                return;
+        }
     }
+
 
     //Handles the grab of the object if there is an object and the player state is grabbing
     void GrabItem(){
