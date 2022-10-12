@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGrabDropManager : MonoBehaviour
 {
-    [SerializeField] Material glowMat;
+    [SerializeField] Material glowMat, transpMat;
     [SerializeField] ItemsManager itemsManager;
     [SerializeField] ItemTimerHandeler ith;
     // Point in space where you can drop an item and where you are gonna carry it
@@ -50,7 +50,7 @@ public class PlayerGrabDropManager : MonoBehaviour
             Transform [] objects= FindObjectsOfType<Transform>();
             for(int i = 0;i < objects.Length;i++){
                 if (objects[i].gameObject.name == "GlowMaterial"){
-                    objects[i].gameObject.GetComponent<MeshRenderer>().material = null;
+                    objects[i].gameObject.GetComponent<MeshRenderer>().material = transpMat;
                 }
             }
             hitObj = null;
