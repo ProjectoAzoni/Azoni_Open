@@ -9,7 +9,7 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField] PlayerGrabDropManager pgd;
     [SerializeField] GameObject showPanel;
     [SerializeField] GameObject itemPanelPrefab;
-    [SerializeField]List<GameObject> items = new List<GameObject>(); 
+    [SerializeField]public List<GameObject> items = new List<GameObject>(); 
     [SerializeField]List<GameObject> panelItems = new List<GameObject>();
     [SerializeField]List<float> timers = new List<float>(); 
     [SerializeField] Sprite [] characSprites;

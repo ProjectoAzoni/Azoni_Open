@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1080567669621429125}
   - component: {fileID: 1080567669621429124}
   - component: {fileID: 1080567669621429127}
+  - component: {fileID: 7186935605400679824}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -131,6 +132,22 @@ MonoBehaviour:
   show: 0
   currentState: 
   myTimer: 0
+--- !u!208 &7186935605400679824
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080567669621429126}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1080567671349018161
 GameObject:
   m_ObjectHideFlags: 0

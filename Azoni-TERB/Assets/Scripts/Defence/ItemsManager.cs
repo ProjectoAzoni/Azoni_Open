@@ -103,8 +103,8 @@ public class ItemsManager : MonoBehaviour
     [SerializeField]Vector3 [] spawnPos = {new Vector3(5.33f,2f,-2.7f),new Vector3(-1.9f,2f,-0.71f),new Vector3(-9.54f,2f,-1.73f)};
     [SerializeField]Vector3 [] spawnScale = {new Vector3(10, 1, 14), new Vector3(4, 1, 10), new Vector3(11, 1, 7)}; 
     //time on seconds 300 = 5min
-    float timeRemaining = 300;
-    public bool timerIsRunning = false;
+    [SerializeField][Tooltip("Time in seconds")] public float timeRemaining = 300;
+    bool timerIsRunning = false;
     
 
     public List<GameObject> ItemsObj = new List<GameObject>();
