@@ -37,7 +37,6 @@ public class EnemyManager : MonoBehaviour
         for (int g = 0; g < timeSpawn.Length; g++)
         {
             if(roundTime == Mathf.RoundToInt(timeSpawn[g]) && !isMoved){
-                print(roundTime);
                 isMoved = true;
                 MoveEnemy();
             }   

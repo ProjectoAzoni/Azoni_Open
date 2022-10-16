@@ -109,12 +109,12 @@ public class StationManager : MonoBehaviour
                 if(tm.characteristics[i] == gameObject.name)
                 {
                     if(tm.characteristics[0] == gameObject.name && tm.currentState == tm.states[2]){
-                        tm.currentState = gameObject.name;
+                        tm.currentState = tm.states[2];
                         itemCount++;
                         items.Add(obj);
                         //set timer count up
                         CheckTimeType(obj);
-                        
+                        return;
                     }
                 }
             }
@@ -124,7 +124,6 @@ public class StationManager : MonoBehaviour
             }
             else
             {
-                
                 tm.currentState = tm.states[1];
                 obj.transform.position = dropPoint.position;
             }
