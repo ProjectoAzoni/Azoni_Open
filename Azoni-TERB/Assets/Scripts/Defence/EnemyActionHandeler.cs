@@ -10,10 +10,9 @@ public class EnemyActionHandeler : MonoBehaviour
     NavMeshAgent nm;
     Transform currentDes;
     Vector3 startPos;
-    GameObject currentitem;
-
-    bool state = false;
-    
+    [HideInInspector] public GameObject currentitem;
+    ItemTimerHandeler ith;
+    bool grab = false;
     private void Awake() {
         em = FindObjectOfType<EnemyManager>();
     }
@@ -26,31 +25,40 @@ public class EnemyActionHandeler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(nm.destination!= null && nm.destination != startPos && transform.position != em.enemySpawnStartPos.position){
-            if(currentDes != null)
-            {
-                if(Vector3.Distance(transform.position, currentDes.position)<= rayDist){
-                    if(currentitem.GetComponent<TrashManager>().currentState == currentitem.GetComponent<TrashManager>().states[1]){
-                        currentitem.transform.position = grabPoint.position;
-                        state = true;
-                        nm.SetDestination(startPos);
-                        em.isMoved = false;
-                    }
-
-                }
-            }
-            if (state && currentitem != null){
-
+        
+        if(currentitem != null && !grab){
+            currentDes.position = new Vector3(currentitem.transform.position.x,1.8f,currentitem.transform.position.z);
+            nm.SetDestination(currentDes.position);
+        }
+        if(grab && currentitem != null){
                 currentitem.transform.position = grabPoint.position;
+        }
+        print(nm.destination);
+        if(currentitem!= null && nm.destination != startPos && transform.position != em.enemySpawnStartPos.position){
+            if(Vector3.Distance(transform.position, currentDes.position)<= nm.stoppingDistance + 0.01f){
+                if(currentitem.GetComponent<TrashManager>().currentState == currentitem.GetComponent<TrashManager>().states[1]){
+                    currentitem.transform.position = grabPoint.position;
+                    currentitem.GetComponent<TrashManager>().currentState = currentitem.GetComponent<TrashManager>().states[0];
+                    nm.SetDestination(startPos);
+                    grab = true;
+                    ith.RestItem(currentitem);
+                    em.isMoved = false;
+                }
+                if(currentitem.GetComponent<TrashManager>().currentState != currentitem.GetComponent<TrashManager>().states[1] && !grab){
+                    nm.SetDestination(startPos);
+                    currentitem = null;
+                    em.isMoved = false;
+                }
             }
         }
     }
-    public void MoveEnemy(Vector3 startPos, GameObject item){
+    public void MoveEnemy(Vector3 startPos, GameObject item, ItemTimerHandeler ith){
         Transform desPos = item.transform;
         nm.SetDestination(desPos.position);
         currentDes = desPos;
         this.startPos = startPos;
         currentitem = item;
+        this.ith = ith;
     }
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
