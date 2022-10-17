@@ -35,11 +35,15 @@ public class EnemyActionHandeler : MonoBehaviour
         }
         
         if(currentitem!= null && nm.destination != startPos && transform.position != em.enemySpawnStartPos.position){
-            if(Vector3.Distance(transform.position, new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z))<= nm.stoppingDistance + 0.5f){
+            if(Vector3.Distance(transform.position, new Vector3(currentitem.transform.position.x, 1.8f, currentitem.transform.position.z))<= nm.stoppingDistance + 1.2f){
                 if(currentitem.GetComponent<TrashManager>().currentState != currentitem.GetComponent<TrashManager>().states[1] && !grab){
+                    if(ith.GetPanel(currentitem) != null){
+                        ith.GetPanel(currentitem).GetComponent<Animator>().SetTrigger("Idle");
+                    }
                     nm.SetDestination(startPos);
                     currentitem = null;
                     em.isMoved = false;
+                    
                     return;
                 }
 
@@ -48,7 +52,7 @@ public class EnemyActionHandeler : MonoBehaviour
                     currentitem.GetComponent<TrashManager>().currentState = currentitem.GetComponent<TrashManager>().states[0];
                     nm.SetDestination(startPos);
                     grab = true;
-                    ith.RestItem(currentitem);
+                    ith.StartCoroutine("RestItem",currentitem);
                     em.isMoved = false;
                 }
                 
@@ -62,9 +66,12 @@ public class EnemyActionHandeler : MonoBehaviour
         this.startPos = startPos;
         currentitem = item;
         this.ith = ith;
+        if(ith.GetPanel(item) != null){
+            ith.GetPanel(item).GetComponent<Animator>().SetTrigger("WarningE");
+        }
     }
     private void OnDrawGizmosSelected() {
         Gizmos.color = new Color(0, 1, 0, 0.5f);
-        Gizmos.DrawRay(transform.position,transform.TransformDirection(Vector3.forward)*rayDist);
+        Gizmos.DrawRay(transform.position,transform.TransformDirection(Vector3.forward)*(nm.stoppingDistance+1.2f));
     }
 }

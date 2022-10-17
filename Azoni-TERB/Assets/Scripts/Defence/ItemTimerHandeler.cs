@@ -10,7 +10,7 @@ public class ItemTimerHandeler : MonoBehaviour
     [SerializeField] GameObject showPanel;
     [SerializeField] GameObject itemPanelPrefab;
     [SerializeField]public List<GameObject> items = new List<GameObject>(); 
-    [SerializeField]List<GameObject> panelItems = new List<GameObject>();
+    [SerializeField]public List<GameObject> panelItems = new List<GameObject>();
     [SerializeField]List<float> timers = new List<float>(); 
     [SerializeField] Sprite [] characSprites;
 
@@ -86,19 +86,30 @@ public class ItemTimerHandeler : MonoBehaviour
             ShowItems(item);
         }     
     }
-    public void RestItem(GameObject item){
+    public IEnumerator RestItem(GameObject item){
         if(items.Count > 0){
             for(int i =0; i < items.Count; i++){
-                if (item == items[i]){        
+                if (item == items[i]){  
+                    panelItems[i].GetComponent<Animator>().SetTrigger("Exit");
+                    yield return new WaitForSeconds(1);      
                     items.RemoveAt(i);
                     panelItems[i].SetActive(false);
                     panelItems.RemoveAt(i);
                     timers.RemoveAt(i);
                 }
             }
+        }     
+    }
+    public GameObject GetPanel(GameObject item){
+        GameObject panel = null;
+        if(items.Count > 0){
+            for(int i =0; i < items.Count; i++){
+                if (item == items[i]){  
+                    panel =  panelItems[i];      
+                }
+            }
         }
-        
-          
+        return panel;
     }
     public void ShowItems(GameObject item){
         if (items.Count > 0){

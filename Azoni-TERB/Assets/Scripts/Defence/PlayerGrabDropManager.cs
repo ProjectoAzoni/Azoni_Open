@@ -126,6 +126,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                 trm.currentState = trm.states[0];
                 //grab item
                 currentHitObj = hitObj;
+                currentHitObj.GetComponentInChildren<Animator>().SetTrigger("Still");
                 obj = currentHitObj.transform;
                 //ith.AddItem(currentHitObj);
             } 
@@ -145,7 +146,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                     //score
                     obj = null;
                     currentHitObj.SetActive(false);
-                    ith.RestItem(currentHitObj);
+                    ith.StartCoroutine("RestItem",currentHitObj);
                     currentState = states[1];
                     currentHitObj = null;
                     currenttrm = null;
@@ -156,7 +157,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                     //score
                     obj = null;
                     currentHitObj.SetActive(false);
-                    ith.RestItem(currentHitObj);
+                    ith.StartCoroutine("RestItem",currentHitObj);
                     currentState = states[1];
                     currentHitObj = null;
                     currenttrm = null;
@@ -167,7 +168,7 @@ public class PlayerGrabDropManager : MonoBehaviour
                     //score
                     obj = null;
                     currentHitObj.SetActive(false);
-                    ith.RestItem(currentHitObj);
+                    ith.StartCoroutine("RestItem",currentHitObj);
                     currentState = states[1];
                     currentHitObj = null;
                     currenttrm = null;
@@ -187,6 +188,7 @@ public class PlayerGrabDropManager : MonoBehaviour
     }
     // handles the drop of the object that is being carried
     void DropItem(){
+        currentHitObj.GetComponentInChildren<Animator>().SetTrigger("Idle1");
         obj = null;
         currentState = states[1];
         currentHitObj.transform.position = objDropPoint.position;

@@ -124,6 +124,8 @@ public class StationManager : MonoBehaviour
             }
             else
             {
+                //drop item
+                obj.GetComponentInChildren<Animator>().SetTrigger("Idle1");
                 tm.currentState = tm.states[1];
                 obj.transform.position = dropPoint.position;
             }

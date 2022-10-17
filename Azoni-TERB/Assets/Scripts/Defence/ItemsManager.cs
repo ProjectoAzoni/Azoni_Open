@@ -150,6 +150,7 @@ public class ItemsManager : MonoBehaviour
             int numb  = UnityEngine.Random.Range(0,3);
             
             Vector3 newPos = spawnPos[numb] + new Vector3(UnityEngine.Random.Range(-spawnScale[numb].x/2,spawnScale[numb].x/2),0f,UnityEngine.Random.Range(-spawnScale[numb].z/2,spawnScale[numb].z/2));
+            ItemsObj[0].GetComponentInChildren<Animator>().SetTrigger("Entry");
             ItemsObj[0].transform.position = newPos;
             ith.AddItem(ItemsObj[0]);
             ItemsObj.RemoveAt(0);

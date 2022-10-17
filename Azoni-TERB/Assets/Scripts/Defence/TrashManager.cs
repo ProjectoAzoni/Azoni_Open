@@ -27,17 +27,4 @@ public class TrashManager : MonoBehaviour
     {
        
     }
-    void SetMyType(){
-        int num = Random.Range(0, types.Length-1);
-        myType = types[num];
-        if (num>=0 && num < 5){
-            myThrowPlace = throwPlaces[1];
-        }
-        if(num == 5){
-            myThrowPlace = throwPlaces[0];
-        } 
-        if (num == 6){
-            myThrowPlace = throwPlaces[2];
-        }
-    }
 }
