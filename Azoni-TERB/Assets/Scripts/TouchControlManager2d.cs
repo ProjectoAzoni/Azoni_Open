@@ -6,7 +6,6 @@ using UnityEngine.Rendering;
 public class TouchControlManager2d : MonoBehaviour
 {
     public  bool isActionButtonPressed;
-    public  bool isTouchActive;
     [SerializeField] GameObject Canvas;
     public int x;
     public int y;
@@ -19,22 +18,16 @@ public class TouchControlManager2d : MonoBehaviour
 
         Canvas.SetActive(true);
     }
-    /*void Update()
+    public int GetX()
     {
-        if (isTouchActive)
-        {
-            Canvas.SetActive(true);
-        }
-        else
-        {
-           Canvas.SetActive(false);
-        }
-    }*/
-
-    public  bool IsTouchActive() { 
-
-        return isTouchActive;
+        return x;
     }
+    public int GetY()
+    {
+        return y;
+    }
+
+
     //VERTICAL MOVEMENT
         //UP BUTTON
             public void OnPointerDownUpButton()
@@ -49,31 +42,31 @@ public class TouchControlManager2d : MonoBehaviour
                 y = -1;
 
             }
-    //POINTER UP
-    public void OnPointerUpVertical()
-    {
-        y = 0;
-    }
+        //POINTER UP
+            public void OnPointerUpVertical()
+            {
+                y = 0;
+            }
 
     //HORIZONTAL MOVEMENT
-    //LEFT BUTTON
-    public void OnPointerDownLeftButton()
-        {
-            x = -1;
+        //LEFT BUTTON
+            public void OnPointerDownLeftButton()
+                {
+                    x = -1;
 
-        }
+                }
 
         //RIGHT BUTTON
-        public void OnPointerDownRightButton()
-        {
-            x= 1;
+            public void OnPointerDownRightButton()
+            {
+                x= 1;
 
-        }
+            }
         //POINTER UP
-        public void OnPointerUpHorizontal()
-        {
-            x = 0;
-        }
+            public void OnPointerUpHorizontal()
+            {
+                x = 0;
+            }
     
 
 
