@@ -96,6 +96,7 @@ public class ItemsManager : MonoBehaviour
     [SerializeField] public GameObject ItemPrefab;
     [SerializeField] Transform ItemsSpawnStartPos, ParentObj;
     [SerializeField] ItemTimerHandeler ith;
+    [SerializeField] TextAnimManager tam;
     [SerializeField] Text countDownText;
     [SerializeField] GameObject endCanvas;
     [SerializeField] float itemSpawnTime, ItemSpawnRepeatRate;
@@ -146,7 +147,7 @@ public class ItemsManager : MonoBehaviour
     }
 
     public void MoveItem(){
-        if(ItemsObj.Count > 0){
+        if(ItemsObj.Count > 0 && tam.isExit){
             int numb  = UnityEngine.Random.Range(0,3);
             
             Vector3 newPos = spawnPos[numb] + new Vector3(UnityEngine.Random.Range(-spawnScale[numb].x/2,spawnScale[numb].x/2),0f,UnityEngine.Random.Range(-spawnScale[numb].z/2,spawnScale[numb].z/2));
@@ -160,7 +161,7 @@ public class ItemsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerIsRunning)
+        if (timerIsRunning && tam.isExit)
         {
             if (timeRemaining > 0)
             {
