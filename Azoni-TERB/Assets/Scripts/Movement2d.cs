@@ -7,6 +7,8 @@ public class Movement2d : MonoBehaviour
 {
     public BoxCollider2D boxCollider;
     private Vector3 moveDelta;
+    private Vector3 scale;
+   
     private RaycastHit2D hit;
     public float moveSpeed;
     
@@ -14,6 +16,7 @@ public class Movement2d : MonoBehaviour
 
     private float x;
     private float y;
+    private int angleX;
    
     [SerializeField] GameObject ControlCanvas;
     TouchControlManager2d touchControlManager2d;
@@ -35,8 +38,10 @@ public class Movement2d : MonoBehaviour
 
         //movement system
         moveDelta = new Vector3(x, y, 0) * moveSpeed;
-        
-  
+        scale = new Vector3(x, 0, 0);
+
+        print(x);
+
 
         //collision system
         hit = Physics2D.BoxCast(transform.position,boxCollider.size,0,new Vector2(0,moveDelta.y),Mathf.Abs(moveDelta.y*Time.deltaTime),LayerMask.GetMask("Actor","Block"));
