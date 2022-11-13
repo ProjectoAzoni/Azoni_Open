@@ -25,7 +25,9 @@ public class Movement2d : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider2D>();
         player = GameObject.Find("Player");
-        
+        scale = player.transform.localScale;
+
+
         touchControlManager2d = ControlCanvas.GetComponent<TouchControlManager2d>();
     }
 
@@ -38,9 +40,22 @@ public class Movement2d : MonoBehaviour
 
         //movement system
         moveDelta = new Vector3(x, y, 0) * moveSpeed;
-        scale = new Vector3(x, 0, 0);
+        if (x == -1 && scale.x>=0)
+        {
+            scale.x = scale.x * -1;
+            player.transform.localScale = scale;
 
-        print(x);
+        }
+
+        else if (x == 1 && scale.x<=0)
+        {
+            scale.x = scale.x * -1;
+            player.transform.localScale = scale;
+
+        }
+        else
+
+            print(x);
 
 
         //collision system
