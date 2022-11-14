@@ -17,7 +17,6 @@ public class NpcDialogueManager : MonoBehaviour
     private bool isPlayerInRange;
     private bool didDialougeStart;
     public bool isLevelUnlocked;
-    public bool isUiButtonPressed;
     public float tiempo;
     public string Scene;
     private int index;
@@ -35,9 +34,6 @@ public class NpcDialogueManager : MonoBehaviour
 
     void Update()
     {
-        isUiButtonPressed = touchControlManager2d.GetIsActionButtonPressed();
-        
-
 
         if (isPlayerInRange && IsBottonPushed() && !isLevelUnlocked)
         {

@@ -53,9 +53,8 @@ public class Movement2d : MonoBehaviour
             player.transform.localScale = scale;
 
         }
-        else
+        
 
-            print(x);
 
 
         //collision system
