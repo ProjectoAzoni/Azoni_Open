@@ -32,6 +32,16 @@ public class NpcDialogueManager : MonoBehaviour
     }
 
 
+    bool GetIsLevelUnlocked()
+    {
+        return isLevelUnlocked;
+    }
+
+    void SetIsLevelUnlocked(bool x)
+    {
+        isLevelUnlocked = x;
+    }
+
     void Update()
     {
 
