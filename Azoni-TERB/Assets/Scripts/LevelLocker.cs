@@ -17,6 +17,7 @@ public class LevelLocker : MonoBehaviour
     void Start()
     {
         sceneController= sceneController = sceneManager.GetComponent<SceneController>();
+        message.SetActive(false);
     }
     void Update()
     {
