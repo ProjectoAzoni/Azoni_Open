@@ -16,10 +16,10 @@ public class Movement2d : MonoBehaviour
 
     private float x;
     private float y;
-    private int angleX;
+
    
     [SerializeField] GameObject ControlCanvas;
-    TouchControlManager2d touchControlManager2d;
+
 
     void Start()
     {
@@ -28,32 +28,42 @@ public class Movement2d : MonoBehaviour
         scale = player.transform.localScale;
 
 
-        touchControlManager2d = ControlCanvas.GetComponent<TouchControlManager2d>();
+ 
     }
 
  
     void Update()
     {
 
-        TouchControl();
+   
+        ////movement system
+        ///
+        Vector3 moveX = JoystickLeft.positionX* transform.right;
+        Vector3 moveY = JoystickLeft.positionY * transform.up;
+
+        x = moveX.x;
+        y = moveY.y;
+
+      
 
 
-        //movement system
+        ////movement system
         moveDelta = new Vector3(x, y, 0) * moveSpeed;
-        if (x == -1 && scale.x>=0)
+        if (x == -1 && scale.x >= 0)
         {
             scale.x = scale.x * -1;
             player.transform.localScale = scale;
 
         }
 
-        else if (x == 1 && scale.x<=0)
+        else if (x == 1 && scale.x <= 0)
         {
             scale.x = scale.x * -1;
             player.transform.localScale = scale;
 
         }
-        
+
+
 
 
 
@@ -70,18 +80,7 @@ public class Movement2d : MonoBehaviour
             player.transform.Translate(moveDelta.x * Time.deltaTime, 0,0);
         }
     }
-    void TouchControl()
-    {
-        x = touchControlManager2d.GetX();
-        y = touchControlManager2d.GetY();
-        //if (isTouchActive)
-        //{
+ 
 
-        //}
-        //else
-        //{
-        //    x = Input.GetAxisRaw("Horizontal");
-        //    y = Input.GetAxisRaw("Vertical");
-        //}
-    }
+    
 }
