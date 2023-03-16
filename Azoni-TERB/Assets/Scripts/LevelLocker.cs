@@ -6,6 +6,7 @@ public class LevelLocker : MonoBehaviour
 {
     [SerializeField] GameObject sceneManager;
     SceneController sceneController;
+    public GameObject message;
     public Sprite lockedSprite;
     public Sprite unlockedSprite;
     public float tiempo;
@@ -29,6 +30,26 @@ public class LevelLocker : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = lockedSprite;
         }
     }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            message.SetActive(true);
+            Debug.Log("si colisiona");
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            message.SetActive(false);
+
+            Debug.Log("No colisiona");
+        }
+    }
     private void OnMouseDown()
     {
         if (isLevelUnlocked)
@@ -36,6 +57,7 @@ public class LevelLocker : MonoBehaviour
            StartCoroutine(Waitfor(tiempo));
         }
     }
+
 
     IEnumerator Waitfor(float tiempo)
     {
