@@ -10376,8 +10376,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62015c8927d877f4b971077efbc03ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockedSprite: {fileID: 21300000, guid: 8c49f09ecdac0004eb2ff226c41f5ea4, type: 3}
-  unlockedSprite: {fileID: 21300000, guid: 1ce5e41183e34e546b5c29d5e46b3747, type: 3}
+  sceneManager: {fileID: 1048117799}
+  lockedSprite: {fileID: 21300000, guid: 1ce5e41183e34e546b5c29d5e46b3747, type: 3}
+  unlockedSprite: {fileID: 21300000, guid: 8c49f09ecdac0004eb2ff226c41f5ea4, type: 3}
+  tiempo: 0.35
+  Scene: lvl1
   isLevelUnlocked: 0
 --- !u!61 &431559981
 BoxCollider2D:
