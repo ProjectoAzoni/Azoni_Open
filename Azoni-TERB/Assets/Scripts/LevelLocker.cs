@@ -58,17 +58,21 @@ public class LevelLocker : MonoBehaviour
             star1.sprite = activeStar;
             star2.sprite = activeStar;
             star3.sprite = inactiveStar;
-        }else if (score >= thres1)
+            isLevelUnlocked = false;
+        }
+        else if (score >= thres1)
         {
             star1.sprite = activeStar;
             star2.sprite = inactiveStar;
             star3.sprite = inactiveStar;
+            isLevelUnlocked = false;
         }
         else if (score < thres1)
         {
             star1.sprite = inactiveStar;
             star2.sprite = inactiveStar;
             star3.sprite = inactiveStar;
+            isLevelUnlocked = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
