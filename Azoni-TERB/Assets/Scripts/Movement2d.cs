@@ -49,16 +49,16 @@ public class Movement2d : MonoBehaviour
 
         ////movement system
         moveDelta = new Vector3(x, y, 0) * moveSpeed;
-        if (x == -1 && scale.x >= 0)
+        if (x <0 && scale.x >= 0)
         {
-            scale.x = scale.x * -1;
+            scale.x *= -1;
             player.transform.localScale = scale;
 
         }
 
-        else if (x == 1 && scale.x <= 0)
+        else if (x > 0 && scale.x <= 0)
         {
-            scale.x = scale.x * -1;
+            scale.x *= -1;
             player.transform.localScale = scale;
 
         }
