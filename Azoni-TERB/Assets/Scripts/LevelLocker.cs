@@ -7,6 +7,7 @@ public class LevelLocker : MonoBehaviour
 {
     [SerializeField] GameObject sceneManager;
     SceneController sceneController;
+    Animator anim;
     public GameObject message;
     public Image star1;
     public Image star2;
@@ -24,9 +25,10 @@ public class LevelLocker : MonoBehaviour
 
     void Start()
     {
-        sceneController= sceneController = sceneManager.GetComponent<SceneController>();
-        message.SetActive(false);
+        sceneController = sceneManager.GetComponent<SceneController>();
+        message.SetActive(true);
         isLevelUnlocked = false;
+        anim = message.GetComponent<Animator>();
     }
     void Update()
     {
@@ -79,15 +81,19 @@ public class LevelLocker : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            message.SetActive(true);
-            Debug.Log("si colisiona");
+            //anim.SetBool("Cartel", true);
+            anim.SetTrigger("OPEN");
+            //message.SetActive(true);
+            Debug.Log("si colisiona");   
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            message.SetActive(false);
+            //anim.SetBool("Cartel", false);
+            anim.SetTrigger("CLOSE");
+            //message.SetActive(false);
 
             Debug.Log("No colisiona");
         }
