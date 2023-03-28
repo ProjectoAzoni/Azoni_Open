@@ -11998,30 +11998,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1285847901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3796924169701717312, guid: d91e335511982684592351aa17eecbe4, type: 3}
-  m_PrefabInstance: {fileID: 3796924169906710275}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1285847906
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285847901}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 13331dbe54148304686bda145a553935, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1322184885
 GameObject:
   m_ObjectHideFlags: 3
@@ -12696,22 +12672,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1285847906, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3796924169701717316, guid: d91e335511982684592351aa17eecbe4, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1949574577}
-    - target: {fileID: 3796924169701717319, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.002735929
-      objectReference: {fileID: 0}
-    - target: {fileID: 3796924169701717319, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.003767393
-      objectReference: {fileID: 0}
-    - target: {fileID: 3796924169701717319, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.0049725818
-      objectReference: {fileID: 0}
     - target: {fileID: 3796924170334073384, guid: d91e335511982684592351aa17eecbe4, type: 3}
       propertyPath: m_Name
       value: LVL_01
