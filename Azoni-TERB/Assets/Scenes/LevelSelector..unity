@@ -12676,6 +12676,38 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2091035
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_Color.r
+      value: 0.082102165
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: d164da07015cb6f4d99a312043568a92, type: 3}
+    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 229
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085807, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924168906085807, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 223
+      objectReference: {fileID: 0}
     - target: {fileID: 3796924169701717316, guid: d91e335511982684592351aa17eecbe4, type: 3}
       propertyPath: m_Camera
       value: 
