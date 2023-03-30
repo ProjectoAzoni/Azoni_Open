@@ -409,7 +409,7 @@ TilemapRenderer:
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
-  m_Mode: 0
+  m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
 --- !u!1839735485 &177751558
@@ -12672,46 +12672,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1285847906, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 3796924168274781324, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9063079
       objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_Color.b
-      value: 0.2091035
+    - target: {fileID: 3796924168274781324, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.42261827
       objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_Color.g
-      value: 0.4245283
+    - target: {fileID: 3796924168274781324, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_Color.r
-      value: 0.082102165
+    - target: {fileID: 3796924168677170625, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9063079
       objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: d164da07015cb6f4d99a312043568a92, type: 3}
-    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 229
+    - target: {fileID: 3796924168677170625, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.42261827
       objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085806, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085807, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -56
-      objectReference: {fileID: 0}
-    - target: {fileID: 3796924168906085807, guid: d91e335511982684592351aa17eecbe4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 223
+    - target: {fileID: 3796924168677170625, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3796924169701717316, guid: d91e335511982684592351aa17eecbe4, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1949574577}
+    - target: {fileID: 3796924170316463853, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9063079
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924170316463853, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.42261827
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796924170316463853, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3796924170334073384, guid: d91e335511982684592351aa17eecbe4, type: 3}
       propertyPath: m_Name
       value: LVL_01
@@ -12764,5 +12764,9 @@ PrefabInstance:
       propertyPath: sceneManager
       value: 
       objectReference: {fileID: 1048117799}
+    - target: {fileID: 3796924170334073391, guid: d91e335511982684592351aa17eecbe4, type: 3}
+      propertyPath: isLevelUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d91e335511982684592351aa17eecbe4, type: 3}
