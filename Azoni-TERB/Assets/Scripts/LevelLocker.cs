@@ -9,6 +9,8 @@ public class LevelLocker : MonoBehaviour
     SceneController sceneController;
     Animator anim;
     public GameObject message;
+    public GameObject confirm;
+    public GameObject difficultySelector;
     public Image star1;
     public Image star2;
     public Image star3;
@@ -21,12 +23,15 @@ public class LevelLocker : MonoBehaviour
     public float tiempo;
     public string Scene;
     public bool isLevelUnlocked;
+    public int difficulty;
 
 
     void Start()
     {
         sceneController = sceneManager.GetComponent<SceneController>();
         message.SetActive(true);
+        confirm.SetActive(false);
+        difficultySelector.SetActive(false);
         isLevelUnlocked = false;
         anim = message.GetComponent<Animator>();
     }
@@ -77,6 +82,17 @@ public class LevelLocker : MonoBehaviour
             isLevelUnlocked = false;
         }
     }
+ 
+    private void SetDifficulty(int x)
+    {
+        difficulty = x;
+        Debug.Log(x);
+    }
+    private int GetDifficulty()
+    {
+        return difficulty;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -102,11 +118,29 @@ public class LevelLocker : MonoBehaviour
     {
         if (isLevelUnlocked)
         {
-           StartCoroutine(Waitfor(tiempo));
+            message.SetActive(false);
+            confirm.SetActive(true);
         }
     }
-
-
+   public void ButtonYes()
+    {
+        confirm.SetActive(false);
+        difficultySelector.SetActive(true);
+    }
+    public void ButtonNo()
+    {
+        confirm.SetActive(false);
+    }
+    public void ButtonNormal()
+    {
+        StartCoroutine(Waitfor(tiempo));
+        SetDifficulty(1);
+    }
+    public void ButtonHard()
+    {
+        StartCoroutine(Waitfor(tiempo));
+        SetDifficulty(2);
+    }
     IEnumerator Waitfor(float tiempo)
     {
         yield return new WaitForSeconds(tiempo);
