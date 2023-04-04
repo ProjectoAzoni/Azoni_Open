@@ -97,8 +97,8 @@ public class LevelLocker : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //anim.SetBool("Cartel", true);
-            anim.SetTrigger("OPEN");
+            anim.SetBool("Cartel", true);
+            //anim.SetTrigger("OPEN");
             //message.SetActive(true);
             Debug.Log("si colisiona");   
         }
@@ -107,8 +107,8 @@ public class LevelLocker : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //anim.SetBool("Cartel", false);
-            anim.SetTrigger("CLOSE");
+            anim.SetBool("Cartel", false);
+            //anim.SetTrigger("CLOSE");
             //message.SetActive(false);
 
             Debug.Log("No colisiona");
@@ -118,7 +118,8 @@ public class LevelLocker : MonoBehaviour
     {
         if (isLevelUnlocked)
         {
-            message.SetActive(false);
+            anim.SetBool("Cartel", false);
+            //anim.SetTrigger("CLOSE");
             confirm.SetActive(true);
         }
     }
@@ -130,6 +131,7 @@ public class LevelLocker : MonoBehaviour
     public void ButtonNo()
     {
         confirm.SetActive(false);
+
     }
     public void ButtonNormal()
     {
