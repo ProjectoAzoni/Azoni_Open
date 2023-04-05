@@ -103,6 +103,7 @@ public class LevelLocker : MonoBehaviour
             Debug.Log("si colisiona");   
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
