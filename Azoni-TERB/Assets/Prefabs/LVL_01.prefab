@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -206, y: -99}
+  m_AnchoredPosition: {x: -209, y: -129}
   m_SizeDelta: {x: 47.3693, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1261657937
@@ -998,6 +998,7 @@ GameObject:
   - component: {fileID: 1719200434}
   - component: {fileID: 1719200433}
   - component: {fileID: 1719200436}
+  - component: {fileID: 8828055997311417665}
   m_Layer: 0
   m_Name: ButtonNo
   m_TagString: Untagged
@@ -1022,7 +1023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 206, y: -99}
+  m_AnchoredPosition: {x: 208, y: -129}
   m_SizeDelta: {x: 47.3693, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1719200435
@@ -1140,6 +1141,39 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &8828055997311417665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719200431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3796924170334073391}
+          m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
+          m_MethodName: ButtonNo
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1796876975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1187,7 @@ GameObject:
   - component: {fileID: 1796876978}
   - component: {fileID: 1796876977}
   - component: {fileID: 1796876980}
+  - component: {fileID: 3017777497927145005}
   m_Layer: 0
   m_Name: ButtonHard
   m_TagString: Untagged
@@ -1177,7 +1212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205, y: -87}
+  m_AnchoredPosition: {x: 201, y: -101}
   m_SizeDelta: {x: 47.369324, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1796876979
@@ -1263,6 +1298,39 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1796876980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796876975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3796924170334073391}
+          m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
+          m_MethodName: ButtonHard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &3017777497927145005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1383,6 +1451,7 @@ GameObject:
   - component: {fileID: 1888934405}
   - component: {fileID: 1888934404}
   - component: {fileID: 1888934407}
+  - component: {fileID: 2984470890109303213}
   m_Layer: 0
   m_Name: ButtonNormal
   m_TagString: Untagged
@@ -1407,7 +1476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -210, y: -87}
+  m_AnchoredPosition: {x: -201, y: -101}
   m_SizeDelta: {x: 47.369324, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1888934406
@@ -1493,6 +1562,39 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1888934407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888934402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3796924170334073391}
+          m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
+          m_MethodName: ButtonNormal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2984470890109303213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
