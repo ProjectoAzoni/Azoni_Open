@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d164da07015cb6f4d99a312043568a92, type: 3}
-    m_FontSize: 174
+    m_FontSize: 165
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xBFestas seguro?"
+  m_Text: "\xBFQuieres jugar?"
 --- !u!1 &930419930
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244.37, y: -147.03}
+  m_AnchoredPosition: {x: -206, y: -99}
   m_SizeDelta: {x: 47.3693, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1261657937
@@ -373,15 +373,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5058824, g: 0.7647059, b: 0.72156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8a6f536f4b2392f40afb62df609f6e40, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -433,19 +433,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1261657936}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3796924170334073391}
-        m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
-        m_MethodName: ButtonYes
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1261657938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +448,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Delegates:
   - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -680,7 +672,7 @@ RectTransform:
   m_GameObject: {fileID: 1348909903}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.60567, y: 0.60567, z: 0.60567}
   m_Children: []
   m_Father: {fileID: 1796876976}
   m_RootOrder: 0
@@ -719,8 +711,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
+    m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -869,8 +861,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.038}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.2901, y: 1.0975}
-  m_SizeDelta: {x: 755.6885, y: 601.7544}
+  m_AnchoredPosition: {x: 0.0357, y: -63.0055}
+  m_SizeDelta: {x: 755.6885, y: 493.8152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1587233873
 CanvasRenderer:
@@ -941,15 +933,15 @@ RectTransform:
   m_GameObject: {fileID: 1675858531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48489, y: 0.48489, z: 0.48489}
   m_Children: []
   m_Father: {fileID: 1888934403}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.20305, y: -0.00000023127}
+  m_SizeDelta: {x: 98.528, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1675858534
 CanvasRenderer:
@@ -980,8 +972,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 9
+    m_Font: {fileID: 12800000, guid: 8297a2bf97dbbba468bd2518d003a876, type: 3}
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 6
@@ -1005,6 +997,7 @@ GameObject:
   - component: {fileID: 1719200435}
   - component: {fileID: 1719200434}
   - component: {fileID: 1719200433}
+  - component: {fileID: 1719200436}
   m_Layer: 0
   m_Name: ButtonNo
   m_TagString: Untagged
@@ -1029,7 +1022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 227.81, y: -150.98}
+  m_AnchoredPosition: {x: 206, y: -99}
   m_SizeDelta: {x: 47.3693, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1719200435
@@ -1053,15 +1046,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5058824, g: 0.7647059, b: 0.72156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8a6f536f4b2392f40afb62df609f6e40, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1113,19 +1106,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1719200434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3796924170334073391}
-        m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
-        m_MethodName: ButtonNo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1719200436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719200431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3796924170334073391}
+          m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
+          m_MethodName: ButtonNo
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1796876975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1152,7 @@ GameObject:
   - component: {fileID: 1796876979}
   - component: {fileID: 1796876978}
   - component: {fileID: 1796876977}
+  - component: {fileID: 1796876980}
   m_Layer: 0
   m_Name: ButtonHard
   m_TagString: Untagged
@@ -1162,8 +1177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 244.91, y: -131}
-  m_SizeDelta: {x: 47.3693, y: 30}
+  m_AnchoredPosition: {x: 205, y: -87}
+  m_SizeDelta: {x: 47.369324, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1796876979
 CanvasRenderer:
@@ -1186,15 +1201,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5058824, g: 0.7647059, b: 0.72156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8a6f536f4b2392f40afb62df609f6e40, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1246,19 +1261,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1796876978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3796924170334073391}
-        m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
-        m_MethodName: ButtonHard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1796876980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796876975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3796924170334073391}
+          m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
+          m_MethodName: ButtonHard
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1802514009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,6 +1382,7 @@ GameObject:
   - component: {fileID: 1888934406}
   - component: {fileID: 1888934405}
   - component: {fileID: 1888934404}
+  - component: {fileID: 1888934407}
   m_Layer: 0
   m_Name: ButtonNormal
   m_TagString: Untagged
@@ -1370,8 +1407,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251.81, y: -131}
-  m_SizeDelta: {x: 47.3693, y: 30}
+  m_AnchoredPosition: {x: -210, y: -87}
+  m_SizeDelta: {x: 47.369324, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1888934406
 CanvasRenderer:
@@ -1394,15 +1431,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5058824, g: 0.7647059, b: 0.72156864, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8a6f536f4b2392f40afb62df609f6e40, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1454,19 +1491,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1888934405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3796924170334073391}
-        m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
-        m_MethodName: ButtonNormal
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1888934407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888934402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3796924170334073391}
+          m_TargetAssemblyTypeName: LevelLocker, Assembly-CSharp
+          m_MethodName: ButtonNormal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3796924168274781325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +2053,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018017054, y: -0.13664061}
+  m_Offset: {x: -0.02683705, y: -0.028552145}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2006,7 +2064,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0602288, y: 3.076964}
+  m_Size: {x: 1.086635, y: 1.1313732}
   m_EdgeRadius: 0
 --- !u!114 &3796924170334073391
 MonoBehaviour:
@@ -2028,12 +2086,12 @@ MonoBehaviour:
   star2: {fileID: 3796924170316463852}
   star3: {fileID: 3796924168274781331}
   maxScore: 12
-  score: 0
+  score: 12
   lockedSprite: {fileID: 21300000, guid: 1ce5e41183e34e546b5c29d5e46b3747, type: 3}
   unlockedSprite: {fileID: 21300000, guid: 8c49f09ecdac0004eb2ff226c41f5ea4, type: 3}
   activeStar: {fileID: 21300000, guid: 7f25c47d6074df34eaf3e38fd13d8311, type: 3}
   inactiveStar: {fileID: 21300000, guid: b2c83ac253ee72948b39c51d62e15d43, type: 3}
-  tiempo: 0.35
+  tiempo: 0.16
   Scene: lvl1
   isLevelUnlocked: 1
   difficulty: 0
